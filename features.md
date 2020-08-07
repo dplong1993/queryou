@@ -58,3 +58,35 @@
   - I want to be able to respond to that comment
   - So that I can share my opinion with the user who made the original comment.
   - **Expected Timeline: 1 day**
+
+
+# Endpoints
+## Front End:
+
+- **'/'** <- home page, displays all questions you are interested in that have answers
+- **'/login'** <- allows a user to enter login information or create a new account
+- **'/profiles/:id/answers'** <- displays all answers made by a user
+- **'/profiles/:id/questions'** <- displays all questions made by a user
+- **'/questions/:id/answers'** <- displays all answers to a specific question
+- **'/query'** <- answers for you <- displays all questions related to your interests that you may want to answer
+- **'topics/:id'** <- shows the main topic page which features a list of answered questions
+- **'topics/:id/questions'** <- populates the topic page with a list of questions that belongs to that topic to answer
+
+## Back end:
+- **'/api'** <- GET all questions from topics that the user is following (in a specific order)
+- **'/api/answers'** <- GET all answers, POST a new answer, DELETE
+- **'/api/answers/:id'** <-GET an answer, PUT edit answer, DELETE an answer
+- **'/api/profiles'** <- GET all users, POST a new user, DELETE all users
+- **'/api/profile/:id'** <- GET one profile, PUT edited profile, DELETE profile
+- **'/api/topics'** <- GET all topics, POST a new topic, DELETE all topics
+- **'/api/topics/:id'** <- GET one topic, PUT edited topic, DELETE topic
+- **'/api/topics/:id/questions'** <- GET list of questions for specific topic
+- **'/api/questions/:id'** <- GET a question, PUT edit question, DELETE a question
+
+# Layouts/Templates
+- log-in.pug
+- sign-up.pug
+- index.pug
+- question.pug
+- topic.pug
+- profile.pug

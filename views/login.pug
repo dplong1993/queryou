@@ -4,13 +4,19 @@ include include/auth-input.pug
 
 append head
   script(src="/public/js/login.js" type="module" defer)
+  link(rel="stylesheet" href="/public/css/login.css")
 
 block content
   form#login-form
-    h1 Log in to Queryou
+    img(url="https://files.slack.com/files-pri/T03GU501J-F018UKASQS0/logo.png")
+    h2 A site to spread information and discover new facets of life
     #errors-container
-    +authInput("Email", "email")
-      input(type="email" name="email" required)
-    +authInput("Password", "password")
-      input(type="password" name="password" required)
-    button(type="submit") Log in
+
+      label(class="label") Login
+
+      input(type="email" name="email" placeholder="Email" required)
+
+      input(type="password" name="password" placeholder="Password" required)
+
+      a(href="../signup") Sign Up
+      button(type="submit") Login

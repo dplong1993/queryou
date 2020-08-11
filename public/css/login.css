@@ -6,7 +6,8 @@ html {
 body {
     background-image: url("https://payload.cargocollective.com/1/14/451635/13818327/Hermes_2000.jpg");
     background-size: cover;
-    background-position: 0px -40px;
+    background-position-y: -360px;
+    background-repeat: no-repeat;
 }
 
 #login-form {
@@ -35,7 +36,7 @@ body {
     justify-items: center;
 }
 
-.label {
+#label {
     margin-bottom: 8px;
     color: black;
     font-weight: bold;

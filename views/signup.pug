@@ -4,12 +4,17 @@ include include/auth-input.pug
 
 append head
   script(src="/public/js/signup.js" type="module" defer)
+  link(rel="stylesheet" href="/public/css/signup.css")
 
 block content
   form#signup-form
     h1 Sign Up For Queryou
     ul#errors-container
     input(type='hidden' name='_csrf' value=csrf)
+    img(id="logo" src="../public/logo.png")
+    h1(id="tagline") A site to spread information and discover new facets of life
+    label(id="label") Sign Up
+    //- ul#errors-container
     +authInput("Email", "email")
       input(type="email" name="email" required)
     +authInput("Username", "username")
@@ -24,4 +29,5 @@ block content
       input(type="password" name="password" required)
     +authInput("Confirm Password", "password2")
       input(type="password" name="password2" required)
-    button(type="submit") Sign in
+    a(href="../login")#cancel Cancel
+    button(type="submit") Sign Up

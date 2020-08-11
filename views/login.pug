@@ -11,6 +11,7 @@ block content
     img(id="logo" src="../public/logo.png")
     h1(id="tagline") A site to spread information and discover new facets of life
     label(id="label") Login
+    input(type='hidden' name='_csrf' value=csrf)
     input(id="email" type="email" name="email" placeholder="Email" required)
     input(id="password" type="password" name="password" placeholder="Password" required)
     a(id="sign-up" href="../signup") Sign Up

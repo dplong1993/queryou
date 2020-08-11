@@ -2,41 +2,56 @@ html {
     font-size: 13px;
 }
 
-a {
-    color: #2b6dad;
-}
 
 body {
     background-image: url("https://payload.cargocollective.com/1/14/451635/13818327/Hermes_2000.jpg");
     background-size: cover;
-    background-position: -48px;
+    background-position: 0px -40px;
 }
 
 #login-form {
-    overflow-y: hidden;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas:
+    "logo logo logo logo"
+    "tagline tagline tagline tagline"
+    ". label . ."
+    "email email email email"
+    "password password password password"
+    ". sign-up button .";
+    grid-template-rows: 81px 78px 26px 40px 56px 30px;
+    grid-template-columns: 1fr 84px 84px 1fr;
+    overflow-y: hidden;
+    /* width: 650px;
+    height: 466px; */
     width: 450px;
-    height: 266px;
+    height: 326px;
     padding-top: 25px;
     box-shadow: 0 0 5px #888;
     border-radius: 4px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 96px;
-    flex-direction: column;
     background-color: white;
-    align-items: center;
+    justify-items: center;
 }
 
 .label {
-    margin-top: 100px;
+    margin-bottom: 8px;
     color: black;
     font-weight: bold;
 }
 
+
+
+a {
+    grid-area: sign-up;
+    color: #2b6dad;
+    justify-self: flex-start;
+}
+
 button {
+    height: 25px;
+    grid-area: button;
     border-radius: 3px;
     box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
     display: inline-block;
@@ -50,17 +65,43 @@ button {
     color: #fff;
     border: 1px solid #3a66ad;
     box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
-    position: relative;
-    left: 74px;
-
+    justify-self: flex-end;
 }
 
 input {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     background-color: #eeeeee;
     outline: 0;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
+    padding: 3px 8px;
     box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+}
+
+#logo {
+    width: 244px;
+    grid-area: logo;
+}
+
+#tagline{
+    grid-area: tagline;
+    font-weight: 400;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    margin: 8px 0 32px;
+    color: #949494;
+    text-align: center;
+}
+
+#label {
+    grid-area: label;
+    justify-self: flex-start;
+}
+
+#email {
+    grid-area: email;
+}
+
+#password {
+    grid-area: password;
+    margin-top: 16px;
 }

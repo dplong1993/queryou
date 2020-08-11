@@ -1,3 +1,8 @@
+import { redirectIfLoggedIn } from './utils/auth.js';
+
+//Redirect from '/signup' to '/' if the user is logged in already
+redirectIfLoggedIn();
+
 const form = document.querySelector('#signup-form');
 const errorsContainer = document.querySelector('#errors-container');
 

@@ -1,3 +1,8 @@
+import { redirectIfLoggedIn } from './utils/auth.js';
+
+//Redirect from '/signup' to '/' if the user is logged in already
+redirectIfLoggedIn();
+
 const form = document.querySelector('#signup-form');
 const errorsContainer = document.querySelector('#errors-container');
 
@@ -12,8 +17,9 @@ form.addEventListener('submit', async (e) => {
   const description = formData.get('description');
   const password = formData.get('password');
   const password2 = formData.get('password2');
+  const _csrf = formData.get('_csrf');
 
-  const body = { email, username, firstName, lastName, description, password, password2 };
+  const body = { email, username, firstName, lastName, description, password, password2, _csrf };
   errorsContainer.innerHTML = '';
 
   const res = await fetch('/api/users', {

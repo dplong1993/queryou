@@ -1,3 +1,8 @@
+import { redirectIfLoggedIn } from './utils/auth.js';
+
+//Redirect from '/login' to '/' if the user is logged in already
+redirectIfLoggedIn();
+
 const form = document.querySelector('#login-form');
 
 form.addEventListener('submit', async (e) => {
@@ -6,8 +11,9 @@ form.addEventListener('submit', async (e) => {
   const formData = new FormData(form);
   const email = formData.get('email');
   const password = formData.get('password');
+  const _csrf = formData.get('_csrf');
 
-  const body = { email, password };
+  const body = { email, password, _csrf };
 
   const res = await fetch('/api/users/token', {
     method: "POST",

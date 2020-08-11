@@ -4,6 +4,25 @@ const router = express.Router();
 const userRouter = require('./users');
 const { environment } = require('../../config');
 const { ValidationError } = require('sequelize');
+const { getUserFromToken } = require('../utils/auth');
+
+//Sets up key of user on all reqs if there is a token in the cookies
+// and sets the value of the key to the user the token corresponds to.
+router.use(async (req, res, next) => {
+  //Get the token from cookies
+  const token = req.cookies.token;
+
+  //If there is no token in cookies go to next middleware
+  if (!token) return next();
+
+  //There is token in cookies, so get the user associated with that token
+  const user = await getUserFromToken(token);
+
+  //If getting user was successful, set key of user on req to the fetched user
+  if(user) req.user = user;
+
+  next();
+});
 
 router.use('/users', userRouter);
 

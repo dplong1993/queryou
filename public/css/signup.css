@@ -13,6 +13,11 @@ input, textarea {
     border-radius: 3px;
     padding: 3px 8px;
     box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+
+}
+
+input {
+    height: 10px;
 }
 
 a {
@@ -20,7 +25,7 @@ a {
 }
 
 #signup-form {
-    display: grid;
+    /* display: grid;
     grid-template-areas:
     "logo logo logo logo"
     "tagline tagline tagline tagline"
@@ -35,7 +40,9 @@ a {
     ". cancel button ."
     ". . . .";
     grid-template-rows: 1fr 1fr 0.5fr 1fr 1fr 1fr 1fr 1.5fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 90px 90px 1fr;
+    grid-template-columns: 1fr 90px 90px 1fr; */
+    display: flex;
+    flex-direction: column;
     overflow-y: hidden;
     width: 450px;
     height: 490px;
@@ -54,17 +61,21 @@ a {
     margin-bottom: 8px;
     color: black;
     font-weight: bold;
+    text-align: start;
+    width: 180px;
+    align-self: center;
 }
 
 
 
 #logo {
     width: 244px;
-    grid-area: logo;
+    align-self: center;
+    /* grid-area: logo; */
 }
 
 #tagline{
-    grid-area: tagline;
+    /* grid-area: tagline; */
     font-weight: 400;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     margin: 8px 0 32px;
@@ -74,18 +85,21 @@ a {
 
 #label {
     justify-self: flex-start;
-    grid-area: label;
+    /* grid-area: label; */
 }
 
 .auth-input{
-    font-size: 9px;
+    display:flex;
+    flex-direction: column;
+    align-self: center;
     color: #666;
+    max-width: 180px;
     text-transform: uppercase;
     letter-spacing: .5px;
     font-weight: bold;
-    height:10px;
+    font-size: 9px;
 }
-
+/*
 div[wfd-id="14"]{
     grid-area: email;
 }
@@ -106,17 +120,19 @@ div[wfd-id="4"]{
 }
 div[wfd-id="2"]{
     grid-area: conpassword;
-}
+} */
 
 
 #cancel {
-    grid-area: cancel;
-    justify-self: flex-start;
+    /* grid-area: cancel; */
+    width: 180px;
+    align-self: center;
 }
 
 button {
-    height: 25px;
-    grid-area: button;
+    height: fit-content;
+    /* grid-area: button; */
+    width: fit-content;
     border-radius: 3px;
     box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
     display: inline-block;
@@ -130,5 +146,8 @@ button {
     color: #fff;
     border: 1px solid #3a66ad;
     box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
-    justify-self: flex-end;
+    align-self: flex-end;
+    position: relative;
+    top: -20px;
+    left: -135px;
 }

@@ -1,3 +1,8 @@
+import { redirectIfLoggedIn } from './utils/auth.js';
+
+//Redirect from '/login' to '/' if the user is logged in already
+redirectIfLoggedIn();
+
 const form = document.querySelector('#login-form');
 
 form.addEventListener('submit', async (e) => {

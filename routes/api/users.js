@@ -82,4 +82,19 @@ router.post('/token',
   })
 );
 
+//Confirm that the user in the cookie is us
+router.get('/token', routeHandler(async (req, res, next) => {
+  //If there is a user on the request then send this response
+  if(req.user) {
+    return await res.json({
+      id: req.user.id,
+      username: req.user.username
+    });
+  }
+  //Otherwise throw a Invalid token error
+  const err = new Error('Invalid token');
+  err.status = 401;
+  next(err);
+}));
+
 module.exports = router;

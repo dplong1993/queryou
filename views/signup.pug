@@ -9,6 +9,7 @@ block content
   form#signup-form
     h1 Sign Up For Queryou
     ul#errors-container
+    input(type='hidden' name='_csrf' value=csrf)
     +authInput("Email", "email")
       input(type="email" name="email" required)
     +authInput("Username", "username")

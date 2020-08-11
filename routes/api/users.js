@@ -7,6 +7,7 @@ const {expiresIn} = require('../../config').jwtConfig;
 const db = require('../../db/models');
 const { User } = db;
 const { getUserToken } = require('../utils/auth');
+const csrfProtection = require('csurf')({cookie: true});
 
 const {check} = require('express-validator');
 
@@ -20,15 +21,15 @@ const validateAuthFields = [
   check("username", "Username field must be between 5 and 100 characters")
     .exists()
     .isLength({min: 5, max: 100}),
-  check("firstName", "FirstName field must be between 5 and 100 characters")
+  check("firstName", "FirstName field must be between 1 and 100 characters")
     .exists()
-    .isLength({min: 5, max: 100}),
-  check("lastName", "LastName field must be between 5 and 100 characters")
+    .isLength({min: 1, max: 100}),
+  check("lastName", "LastName field must be between 1 and 100 characters")
     .exists()
-    .isLength({min: 5, max: 100}),
+    .isLength({min: 1, max: 100}),
   check("description", "Description field must be between 5 and 5000 characters")
     .exists()
-    .isLength({min:5, max:5000}),
+    .isLength({min:1, max:5000}),
   check("password", "Password field must be 6 or more characters")
     .exists()
     .isLength({min: 6, max: 100}),
@@ -37,7 +38,9 @@ const validateAuthFields = [
     .custom((value, {req}) => value === req.body.password),
 ]
 
+//signup route
 router.post('/',
+  csrfProtection,
   validateEmail,
   validateAuthFields,
   handleValidationErrors,
@@ -58,7 +61,9 @@ router.post('/',
   res.json({id: user.id, token})
 }));
 
+//login route
 router.post('/token',
+  csrfProtection,
   validateEmail,
   handleValidationErrors,
   routeHandler(async (req, res, next) => {

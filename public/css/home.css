@@ -1,0 +1,22 @@
+.top-nav {
+  display: flex;
+}
+
+#logo{
+  height: 24px;
+  width: 88px;
+}
+
+.new-user{
+  box-sizing: border-box;
+  direction: ltr;
+  height: 49px;
+}
+
+#new-user{
+  box-sizing: border-box;
+  direction: ltr;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}

@@ -61,7 +61,7 @@ router.post('/',
   res.json({id: user.id, token})
 }));
 
-//login route
+//login_signup route
 router.post('/token',
   csrfProtection,
   validateEmail,

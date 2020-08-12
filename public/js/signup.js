@@ -42,7 +42,7 @@ form.addEventListener('submit', async (e) => {
     errorsContainer.appendChild(errorLi);
     const banner = document.getElementById("banner");
     banner.classList.add("isVisible");
-    setTimeout(()=> banner.classList.remove("isVisible"),3500);
+    setTimeout(()=> banner.classList.remove("isVisible"),7000);
     return
   }
 

@@ -17,6 +17,15 @@ input, textarea {
     box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
 }
 
+#login-form{
+    border-left: solid lightgray 0.6px;
+    padding-left: 18px;
+}
+
+#signup-form{
+    padding-right: 20px;
+}
+
 #banner {
     position: absolute;
     top: 0;
@@ -36,6 +45,8 @@ input, textarea {
 #errors-container{
     display: flex;
     justify-content: center;
+    color: #fff;
+    background-color: transparent;
 }
 
 #errors-container li{
@@ -47,41 +58,65 @@ input {
     height: 10px;
 }
 
-a {
-    color: #2b6dad;
+input[name="firstName"]{
+    margin-right: 3px;
 }
 
-#signup-form {
+a {
+    color: #2b6dad;
+    font-size: 9px;
+}
+
+#forms {
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
-    width: 450px;
-    height: 490px;
-    padding-top: 25px;
-    box-shadow: 0 0 5px #888;
-    border-radius: 4px;
+    width: 436px;
+    height: 460px;
+    padding-top: 12px;
+    box-shadow: 0 0 3px #888;
+    border-radius: 2px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 96px;
+    margin-top: 63px;
     background-color: white;
     justify-items: center;
 }
 
-
-#label {
-    margin-bottom: 8px;
-    color: black;
-    font-weight: bold;
-    text-align: start;
-    width: 180px;
+#form-sheets{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
     align-self: center;
 }
 
 
+#name-inputs{
+    display: flex;
+}
+#name-inputs input{
+    max-width: 67px;
+}
+
+.label {
+    margin-bottom: 8px;
+    color: black;
+    font-weight: bold;
+    text-align: start;
+    align-self: center;
+    justify-self: flex-start;
+    font-size: 9px;
+}
 
 #logo {
-    width: 244px;
+    height: 65px;
     align-self: center;
+}
+
+.login {
+    position: relative;
+    top: -13px;
+    left: 138px;
 }
 
 #tagline{
@@ -92,37 +127,59 @@ a {
     text-align: center;
 }
 
-#label {
-    justify-self: flex-start;
-}
-
 .auth-input{
     display:flex;
     flex-direction: column;
     align-self: center;
     color: #666;
-    max-width: 180px;
+    max-width: 174px;
     text-transform: uppercase;
     letter-spacing: .5px;
     font-weight: bold;
-    font-size: 9px;
+    font-size: 8px;
+    background-color: #fafafa;
+}
+
+#email, #password {
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+    color: #666;
+    width: 158px;
+    height: 14px;
+    letter-spacing: .5px;
+    font-weight: bold;
+    font-size: 8px;
+    text-transform: none;
+    font-family: inherit;
+    font-weight: 200;
+    background-color: #fafafa;
+    margin-top: 5px;
+    margin-bottom: 20px;
+
 }
 
 
+#signup-form div{
+    margin-top: 5px;
+}
+
 #cancel {
-    width: 180px;
     align-self: center;
+    margin-left: 100px;
 }
 
 button {
+    font-size: 10px;
     height: fit-content;
     width: fit-content;
-    border-radius: 3px;
+    border-radius: 2px;
     box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+    margin-left: 5px;
     display: inline-block;
-    font-weight: 500;
+    font-weight: 550;
     outline: 0;
-    padding: 3px 7px 4px 7px;
+    padding: 3px 4px 4px 3px;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -130,8 +187,5 @@ button {
     color: #fff;
     border: 1px solid #3a66ad;
     box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
-    align-self: flex-end;
-    position: relative;
-    top: -20px;
-    left: -135px;
+    align-self: flex-start;
 }

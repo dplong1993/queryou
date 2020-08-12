@@ -1,11 +1,12 @@
-extends layout.pug
+//- extends layout.pug
 
-include include/auth-input.pug
+//- include include/auth-input.pug
 
-append head
-  script(src="/public/js/login.js" type="module" defer)
-  link(rel="stylesheet" href="/public/css/login.css")
+//- append head
+//-   script(src="/public/js/login.js" type="module" defer)
+//-   link(rel="stylesheet" href="/public/css/login.css")
 
+<<<<<<< HEAD
 block content
   div#banner
     ul#errors-container
@@ -18,3 +19,17 @@ block content
     input(id="password" type="password" name="password" placeholder="Password" required)
     a(id="sign-up" href="../signup") Sign Up
     button(type="submit") Login
+=======
+//- block content
+//-   div#banner
+//-     ul#errors-container
+//-   form#login-form
+//-     img(id="logo" src="../public/logo.png")
+//-     h1(id="tagline") A site to spread information and discover new facets of life
+//-     label(id="label") Login
+//-     input(type='hidden' name='_csrf' value=csrf)
+//-     input(id="email" type="email" name="email" placeholder="Email" required)
+//-     input(id="password" type="password" name="password" placeholder="Password" required)
+//-     a(id="sign-up" href="../signup") Sign Up
+//-     button(type="submit") Login
+>>>>>>> master

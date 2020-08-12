@@ -5,9 +5,11 @@ html {
 
 body {
     background-image: url("https://payload.cargocollective.com/1/14/451635/13818327/Hermes_2000.jpg");
-    background-size: cover;
+    background-size: 1440px;
+    background-position: center;
     background-position-y: -360px;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 #login-form {
@@ -34,6 +36,29 @@ body {
     margin-top: 96px;
     background-color: white;
     justify-items: center;
+}
+
+#banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #5b6770;
+    display: inline-block;
+    width: 100%;
+    font-weight: 500;
+    opacity: 0;
+    transition:  all 1s ease-in-out;
+}
+
+#banner.isVisible {
+    opacity: 1;
+}
+
+#errors-container{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    background-color: transparent;
 }
 
 #label {

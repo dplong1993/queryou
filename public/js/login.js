@@ -27,6 +27,9 @@ form.addEventListener('submit', async (e) => {
     const {message} = data;
     const errorsContainer = document.querySelector('#errors-container');
     errorsContainer.innerHTML = message;
+    const banner = document.getElementById("banner");
+    banner.classList.add("isVisible");
+    setTimeout(()=> banner.classList.remove("isVisible"),3500);
     return
   }
 

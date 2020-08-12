@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       content: {
+        allowNull: false,
         type: Sequelize.STRING(5000)
       },
       questionId: {

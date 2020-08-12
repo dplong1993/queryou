@@ -18,13 +18,13 @@ module.exports = (sequelize, DataTypes) => {
   Question.init({
     content: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: {
           args: [1, 5000],
           msg: "Answer must be between 1 and 5000 characters."
         }
-      }
+      },
+      allowNull: false
     },
     ownerId: {
       type: DataTypes.INTEGER,

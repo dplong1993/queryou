@@ -13,6 +13,11 @@ router.get('/signup', csrfProtection, (req, res) => {
   res.render('signup', { csrf: req.csrfToken()});
 });
 
+router.get('/login_signup', csrfProtection, (req, res) => {
+  if(req.user) res.redirect('/');
+  res.render('login_signup', { csrf: req.csrfToken()});
+});
+
 router.get('*', (req, res) => {
   res.render('error-page');
 })

@@ -16,10 +16,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Answer.init({
-    content: DataTypes.STRING,
-    questionId: DataTypes.INTEGER,
-    ownerId: DataTypes.INTEGER
-  }, {
+    content: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: {
+          args: [1, 5000],
+          msg: "Answer must be between 1 and 5000 characters."
+        }
+      }
+    },
+    questionId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    ownerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
+  }, 
+  {
     sequelize,
     modelName: 'Answer',
   });

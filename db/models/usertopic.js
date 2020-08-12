@@ -15,8 +15,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   UserTopic.init({
-    userId: DataTypes.INTEGER,
-    topicId: DataTypes.INTEGER
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    topicId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'UserTopic',

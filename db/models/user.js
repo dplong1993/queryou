@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
     }
     static associate(models) {
-      User.hasMany(model.UserTopic, { foreignKey: 'topicId' }),
+      User.hasMany(model.UserTopic, { foreignKey: 'userId' }),
       User.hasMany(model.AnswerComment, { foreignKey: 'ownerId' }),
       User.hasMany(model.Answer, { foreignKey: 'ownerId'}),
       User.hasMany(model.Topic, { foreignKey: 'ownerId'}),

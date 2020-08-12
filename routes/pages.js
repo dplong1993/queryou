@@ -5,6 +5,7 @@ const csrfProtection = require('csurf')({cookie: true});
 
 //Home page route
 router.get('/', (req, res) => {
+  // if(!req.user) res.redirect('/login_signup');
   if(!req.user) res.redirect('/login');
   res.render('home');
 });

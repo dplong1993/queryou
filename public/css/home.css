@@ -1,16 +1,38 @@
+.outer-container {
+  display: flex;
+  height: 49px;
+  background-color: #fff;
+}
+
+.inner-container{
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
 .top-nav {
   display: flex;
+  align-items: center;
 }
 
 #logo{
   height: 24px;
-  width: 88px;
 }
 
-.new-user{
+.nav-bar-user-image-inner-container{
   box-sizing: border-box;
+  display: block;
   direction: ltr;
+  width: 24px;
   height: 49px;
+}
+
+.nav-bar-user-image-inner-container{
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  direction: ltr;
+  width: 24px;
+  height: 24px;
 }
 
 #new-user{
@@ -19,4 +41,89 @@
   width: 24px;
   height: 24px;
   border-radius: 12px;
+}
+
+.top-nav li a{
+  display: block;
+  height: 100%;
+  color: #636466;
+}
+
+.nav-bar-text{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-bttn-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 49px;
+}
+
+.nav-bttn-container:hover{
+  background-color: rgba(0,0,0,0.03);
+}
+
+.home-bttn-container{
+  width: 97px;
+}
+
+.answers-bttn-container{
+  width: 106px;
+}
+
+.topics-bttn-container{
+  width: 103px;
+}
+
+.search-bar-outer-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dee0e1;
+  height: 36px;
+  width: 320px;
+}
+
+.search-bar-inner-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search{
+  border-width: 0px;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgb(40, 40, 41);
+}
+
+.create-question-button-container{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 122px;
+  height: 30px;
+}
+
+.create-question-button{
+  box-sizing: border-box;
+  display: block;
+  width: 114px;
+  height: 30px;
+  /* background-color: #b92b27; */
+  background-color: #FF7E2B;
+  border-radius: 1000px;
+  padding: 5px 15px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.create-question-text-container{
+  color: white;
 }

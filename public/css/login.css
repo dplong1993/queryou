@@ -38,6 +38,29 @@ body {
     justify-items: center;
 }
 
+#banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #5b6770;
+    display: inline-block;
+    width: 100%;
+    font-weight: 500;
+    opacity: 0;
+    transition:  all 1s ease-in-out;
+}
+
+#banner.isVisible {
+    opacity: 1;
+}
+
+#errors-container{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    background-color: transparent;
+}
+
 #label {
     margin-bottom: 8px;
     color: black;

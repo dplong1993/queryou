@@ -18,6 +18,11 @@ router.get('/login_signup', csrfProtection, (req, res) => {
   res.render('login_signup', { csrf: req.csrfToken()});
 });
 
+router.get('/interests', csrfProtection, (req, res)=>{
+  res.render('interests', {csrf: req.csrfToken()});
+});
+
+
 router.get('*', (req, res) => {
   res.render('error-page');
 })

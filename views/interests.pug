@@ -1,0 +1,21 @@
+extends layout.pug
+
+include include/auth-input.pug
+
+append head
+  script(src="/public/js/interests.js" type="module" defer)
+  link(rel="stylesheet" href="/public/css/interests.css")
+
+block content
+    #banner
+        img(id="logo" src="../public/logo.png")
+        #progress-bar
+            span#start
+                #loading-bar
+                #bar
+                #progress
+            span#finish
+    #interests
+        #title
+        #topics
+        button(type="submit")

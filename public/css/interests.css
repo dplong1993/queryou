@@ -1,0 +1,16 @@
+#banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    font-weight: 500;
+}
+
+#logo {
+    height: 50px;
+}
+
+#topics{
+    overflow-x: scroll;
+}

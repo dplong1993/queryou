@@ -32,11 +32,17 @@ form.addEventListener('submit', async (e) => {
   const data = await res.json();
   if(!res.ok){
     const {message, errors} = data;
-    for (let error of errors) {
-      const errorLi = document.createElement('li');
-      errorLi.innerHTML = error;
-      errorsContainer.appendChild(errorLi);
-    }
+    // for (let error of errors) {
+    //   const errorLi = document.createElement('li');
+    //   errorLi.innerHTML = error;
+    //   errorsContainer.appendChild(errorLi);
+    // }
+    const errorLi = document.createElement('li');
+    errorLi.innerHTML = errors[0];
+    errorsContainer.appendChild(errorLi);
+    const banner = document.getElementById("banner");
+    banner.classList.add("isVisible");
+    setTimeout(()=> banner.classList.remove("isVisible"),3500);
     return
   }
 

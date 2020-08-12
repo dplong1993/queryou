@@ -1,8 +1,10 @@
 body {
     background-image: url("https://payload.cargocollective.com/1/14/451635/13818327/Hermes_2000.jpg");
-    background-size: cover;
+    background-size: 1440px;
+    background-position: center;
     background-position-y: -360px;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 input, textarea {
@@ -13,7 +15,32 @@ input, textarea {
     border-radius: 3px;
     padding: 3px 8px;
     box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+}
 
+#banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #5b6770;
+    display: inline-block;
+    width: 100%;
+    font-weight: 500;
+    opacity: 0;
+    transition:  all 1s ease-in-out;
+}
+
+#banner.isVisible {
+    opacity: 1;
+}
+
+#errors-container{
+    display: flex;
+    justify-content: center;
+}
+
+#errors-container li{
+    color: #fff;
+    background-color: transparent;
 }
 
 input {
@@ -25,22 +52,6 @@ a {
 }
 
 #signup-form {
-    /* display: grid;
-    grid-template-areas:
-    "logo logo logo logo"
-    "tagline tagline tagline tagline"
-    ". label . ."
-    ". firstname firstname ."
-    ". lastname lastname ."
-    ". username username ."
-    ". email email ."
-    ". description description ."
-    ". password password ."
-    ". conpassword conpassword ."
-    ". cancel button ."
-    ". . . .";
-    grid-template-rows: 1fr 1fr 0.5fr 1fr 1fr 1fr 1fr 1.5fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 90px 90px 1fr; */
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
@@ -71,11 +82,9 @@ a {
 #logo {
     width: 244px;
     align-self: center;
-    /* grid-area: logo; */
 }
 
 #tagline{
-    /* grid-area: tagline; */
     font-weight: 400;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     margin: 8px 0 32px;
@@ -85,7 +94,6 @@ a {
 
 #label {
     justify-self: flex-start;
-    /* grid-area: label; */
 }
 
 .auth-input{
@@ -99,39 +107,15 @@ a {
     font-weight: bold;
     font-size: 9px;
 }
-/*
-div[wfd-id="14"]{
-    grid-area: email;
-}
-div[wfd-id="12"]{
-    grid-area: username;
-}
-div[wfd-id="10"]{
-    grid-area: firstname;
-}
-div[wfd-id="8"]{
-    grid-area: lastname;
-}
-div[wfd-id="6"]{
-    grid-area: description;
-}
-div[wfd-id="4"]{
-    grid-area: password;
-}
-div[wfd-id="2"]{
-    grid-area: conpassword;
-} */
 
 
 #cancel {
-    /* grid-area: cancel; */
     width: 180px;
     align-self: center;
 }
 
 button {
     height: fit-content;
-    /* grid-area: button; */
     width: fit-content;
     border-radius: 3px;
     box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);

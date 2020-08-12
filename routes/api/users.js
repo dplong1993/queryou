@@ -87,6 +87,12 @@ router.post('/token',
   })
 );
 
+//Deletes a user's token to log them out
+router.delete('/session', routeHandler(async(req,res) => {
+  res.clearCookie('token');
+  res.json({ message: 'success' });
+}));
+
 //Confirm that the user in the cookie is us
 router.get('/token', routeHandler(async (req, res, next) => {
   //If there is a user on the request then send this response

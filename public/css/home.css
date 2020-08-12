@@ -127,3 +127,23 @@
 .create-question-text-container{
   color: white;
 }
+
+.log-out-btn-container{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.log-out{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 20%;
+  height: 50px;
+  margin: auto;
+  margin-top: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #636466;
+}

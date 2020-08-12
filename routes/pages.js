@@ -3,9 +3,10 @@ const router = express.Router();
 
 const csrfProtection = require('csurf')({cookie: true});
 
+//Home page route
 router.get('/', (req, res) => {
   if(!req.user) res.redirect('/login');
-  res.send('Home Page!');
+  res.render('home');
 });
 
 //Login page route

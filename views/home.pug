@@ -1,0 +1,19 @@
+extends layout.pug
+
+block content
+  nav
+    ul.top-nav
+      li
+        img(id="logo" src="../public/logo.png")
+      li
+        <i class="fas fa-home"></i>
+      li
+        <i class="fas fa-pen-square"></i>
+      li
+        <i class="fas fa-users"></i>
+      li
+        input(type="text" name='search' placeholder='search')
+      li
+        <i class="fas fa-user"></i>
+      li
+        button(type="submit") Add Question

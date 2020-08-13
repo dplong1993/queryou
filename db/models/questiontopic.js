@@ -10,8 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-        QuestionTopic.belongsTo(model.Question, { foreignKey: 'questionId' }),
-        QuestionTopic.belongsTo(model.Topic, { foreignKey: 'topicId' })
+      // define association here
+      QuestionTopic.belongsTo(models.Question, {foreignKey: 'questionId'});
+      QuestionTopic.belongsTo(models.Topic, {foreignKey: 'topicId'});
     }
   };
   QuestionTopic.init({
@@ -19,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    topicId: { 
+    topicId: {
       type: DataTypes.INTEGER,
       allowNull: false
     }

@@ -10,27 +10,27 @@ module.exports = {
       },
       content: {
         allowNull: false,
-        type: Sequelize.STRING(5000)
+        type: Sequelize.STRING
       },
       questionId: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Questions' }
+        references: {model: "Questions"},
+        type: Sequelize.INTEGER
       },
       ownerId: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Users' },
+        references: {model: "Users"},
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("NOW")
+        defaultValue: Sequelize.fn('NOW')
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("NOW")
+        defaultValue: Sequelize.fn('NOW')
       }
     });
   },

@@ -14,22 +14,23 @@ module.exports = {
       },
       ownerId: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Users' }
+        references: {model: "Users"},
+        type: Sequelize.INTEGER
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("NOW")
+        defaultValue: Sequelize.fn('NOW')
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("NOW")
+        defaultValue: Sequelize.fn('NOW')
       }
     });
   },

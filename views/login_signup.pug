@@ -1,0 +1,43 @@
+extends layout.pug
+
+include include/auth-input.pug
+
+append head
+  script(src="/public/js/login.js" type="module" defer)
+  script(src="/public/js/signup.js" type="module" defer)
+  link(rel="stylesheet" href="/public/css/login_signup.css")
+
+block content
+  div#banner
+    ul#errors-container
+  div#forms
+    img(id="logo" src="../public/images/logo.png")
+    h1(id="tagline") A site to spread information and discover new facets of life
+    div#form-sheets
+        form#login-form
+            input(type='hidden' name='_csrf' value=csrf)
+            label(class="label") Login
+            input(id="email" type="email" name="email" placeholder="Email" required)
+            input(id="password" type="password" name="password" placeholder="Password" required)
+            button(class="login" type="submit") Login
+        form#signup-form
+            input(type='hidden' name='_csrf' value=csrf)
+            label(class="label") Sign Up
+            div#name-inputs
+                +authInput("First Name", "firstName")
+                    input(type="text" name="firstName" required)
+                div
+                +authInput("Last Name", "lastName")
+                    input(type="text" name="lastName" required)
+            +authInput("Email", "email")
+              input(type="email" name="email" required)
+            +authInput("Username", "username")
+              input(type="text" name="username" required)
+            +authInput("Description", "description")
+              textarea(name="description")
+            +authInput("Password", "password")
+              input(type="password" name="password" required)
+            +authInput("Confirm Password", "password2")
+              input(type="password" name="password2" required)
+            a(href="../login_signup")#cancel Cancel
+            button(type="submit") Sign Up

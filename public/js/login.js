@@ -1,6 +1,6 @@
 import { redirectIfLoggedIn } from './utils/auth.js';
 
-//Redirect from '/login' to '/' if the user is logged in already
+//Redirect from '/login_signup' to '/' if the user is logged in already
 redirectIfLoggedIn();
 
 const form = document.querySelector('#login-form');
@@ -29,7 +29,7 @@ form.addEventListener('submit', async (e) => {
     errorsContainer.innerHTML = message;
     const banner = document.getElementById("banner");
     banner.classList.add("isVisible");
-    setTimeout(()=> banner.classList.remove("isVisible"),3500);
+    setTimeout(()=> banner.classList.remove("isVisible"),7000);
     return
   }
 

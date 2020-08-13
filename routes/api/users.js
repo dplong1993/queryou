@@ -61,7 +61,7 @@ router.post('/',
   res.json({id: user.id, token})
 }));
 
-//login route
+//login_signup route
 router.post('/token',
   csrfProtection,
   validateEmail,
@@ -86,6 +86,12 @@ router.post('/token',
   res.json({id: user.id, token})
   })
 );
+
+//Deletes a user's token to log them out
+router.delete('/session', routeHandler(async(req,res) => {
+  res.clearCookie('token');
+  res.json({ message: 'success' });
+}));
 
 //Confirm that the user in the cookie is us
 router.get('/token', routeHandler(async (req, res, next) => {

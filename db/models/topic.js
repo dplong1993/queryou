@@ -10,14 +10,19 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Topic.hasMany(model.UserTopic, { foreignKey: 'topicId' }),
-      Topic.belongsTo(model.User, { foreignKey: 'ownerId' }),
-      Topic.hasMany(model.QuestionTopic, {foreignKey: 'topicId'})
+      // define association here
+      Topic.belongsTo(models.User, {foreignKey: 'ownerId'});
+      Topic.hasMany(models.QuestionTopic, {foreignKey: 'topicId'});
+      Topic.belongsToMany(models.Question, {
+        through: models.QuestionTopic,
+        foreignKey: 'topicId',
+        otherKey: 'questionId'
+      });
     }
   };
   Topic.init({
     description: {
-      type: DataTypes.TEXT,
+      type:DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: {
@@ -27,13 +32,17 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     ownerId: {
-      type: DataTypes.INTEGER,
+      type:DataTypes.INTEGER,
       allowNull: false
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false,
       validate: {
+        len: {
+          args: [1, 100],
+          msg: "Topic name must be between 1 and 100 characters."
+        },
         notEmpty: true
       }
     }

@@ -7,7 +7,7 @@ const { User } = db;
 exports.getUserToken = (user) => {
   return jwt.sign({id: user.id, email: user.email},
     secret,
-    {expiresIn}
+    {expiresIn: parseInt(expiresIn)}
   );
 }
 

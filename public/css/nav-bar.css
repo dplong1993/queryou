@@ -25,6 +25,11 @@
   cursor: pointer;
 }
 
+.current-page{
+  color: #b92b27;
+  border-bottom: solid 1px #b92b27;
+}
+
 .header-div{
   box-sizing: border-box;
   /* position: fixed; */

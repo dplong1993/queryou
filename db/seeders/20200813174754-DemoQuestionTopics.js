@@ -6,10 +6,13 @@ const {Question, Topic} = db;
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const question = await Question.findOne({where: {id: 1}});
-    const topic = await Topic.findOne({where: {id: 1}});
+    const questions = await Question.findAll();
+    const topics = await Topic.findAll();
     await queryInterface.bulkInsert('QuestionTopics', [
-      {questionId: question.id, topicId: topic.id},
+      {questionId: questions[0].id, topicId: topics[0].id},
+      {questionId: questions[1].id, topicId: topics[0].id},
+      {questionId: questions[1].id, topicId: topics[1].id},
+      {questionId: questions[2].id, topicId: topics[2].id},
     ], { fields: ['questionId', 'topicId']});
   },
 

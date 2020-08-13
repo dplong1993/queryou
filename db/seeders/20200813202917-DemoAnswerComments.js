@@ -5,11 +5,11 @@ const {User, Answer} = db;
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const user = await User.findOne({where: {id: 1}});
-    const answer = await Answer.findOne({where: {id: 1}});
+    const users = await User.findAll();
+    const answers = await Answer.findAll();
     await queryInterface.bulkInsert('AnswerComments', [
-      {content: 'Great Answer!', ownerId: user.id, answerId: answer.id},
-      {content: 'You are so smart!', ownerId: user.id, answerId: answer.id},
+      {content: 'Great Answer!', ownerId: users[0].id, answerId: answers[0].id},
+      {content: 'You are so smart!', ownerId: users[2].id, answerId: answers[2].id},
     ], { fields: ['content', 'ownerId', 'answerId']});
   },
 

@@ -75,7 +75,33 @@ body{
     border-width: 1px;
     border-color: #dee0e1;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    direction: ltr;
+    box-sizing: border-box;
+
+    flex: 1 1 0%;
 }
+
+#topic-tile {
+    box-sizing: border-box;
+    direction: ltr;
+    font: inherit;
+    outline: inherit;
+    padding: 0px;
+    position: relative;
+    flex-basis: calc(16.6% - 8px);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px -40px 20px inset;
+    color: inherit;
+    background-color: black;
+    text-align: inherit;
+    overflow: hidden;
+}
+
+/* #topic-image{
+    max-width: 40px;
+    max-height: 40px;
+} */
 
 #interests{
     max-width: 760px;
@@ -153,3 +179,22 @@ button{
     border-bottom-right-radius: 4px;
     justify-content: flex-end;
 }
+
+
+
+/* custom checkboxes */
+
+
+
+/* empty check {
+    display: block;
+box-sizing: border-box;
+    direction: ltr;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.75);
+    opacity: 50%;
+}
+
+filled check {
+    display: none;
+} */

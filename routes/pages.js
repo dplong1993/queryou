@@ -10,6 +10,7 @@ router.get('/login_signup', csrfProtection, (req, res) => {
 });
 
 router.get('/interests', csrfProtection, (req, res)=>{
+
   res.render('interests', {csrf: req.csrfToken()});
 });
 

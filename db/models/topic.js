@@ -13,10 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Topic.belongsTo(models.User, {foreignKey: 'ownerId'});
       Topic.hasMany(models.QuestionTopic, {foreignKey: 'topicId'});
+      Topic.hasMany(models.UserTopic, {foreignKey: 'topicId'});
       Topic.belongsToMany(models.Question, {
         through: models.QuestionTopic,
         foreignKey: 'topicId',
         otherKey: 'questionId'
+      });
+      Topic.belongsToMany(models.User, {
+        through: models.UserTopic,
+        foreignKey: 'topicId',
+        otherKey: 'userId'
       });
     }
   };

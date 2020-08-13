@@ -10,7 +10,7 @@ module.exports = {
       },
       description: {
         allowNull: false,
-        type: Sequelize.TEXT(5000)
+        type: Sequelize.TEXT
       },
       ownerId: {
         allowNull: false,

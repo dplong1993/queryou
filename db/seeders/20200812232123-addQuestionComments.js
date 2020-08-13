@@ -6,18 +6,25 @@ const { User, Question } = db;
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const demoUser1 = await User.findOne({
-      where: { username: "DemoUser1" }
+      where: { username: "DemoUser1"}
     }),
     const demoQuestion = await Question.findOne({
       where: { id: "1"}
     })
-      await queryInterface.bulkInsert('Answers', [
-        { content: 'This is a test answer for the demo question.', questionId: demoQuestion.id, ownerId: demoUser1.id }
-        ], { fields: ['content']});
+    await queryInterface.bulkInsert('QuestionComments', [
+      {
+      name: 'John Doe',
+      isBetaMember: false
+    }], {});
+  
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Answers', null, {});
+    /**
+     * Add commands to revert seed here.
+     *
+     * Example:
+     * await queryInterface.bulkDelete('People', null, {});
+     */
   }
 };
-

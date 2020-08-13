@@ -27,6 +27,12 @@ router.get('/notifications', (req, res) => {
   res.render("notifications.pug");
 });
 
+//Profile page router
+router.get('/profile', (req, res) => {
+  if(!req.user) res.redirect('/login_signup');
+  res.render("profile.pug");
+});
+
 //Home page router
 router.get('/', (req, res) => {
   if(!req.user) res.redirect('/login_signup');

@@ -18,3 +18,7 @@ a {
 ul, ol {
     list-style: none;
 }
+
+body {
+    background-color: rgb(241, 242, 242);
+}

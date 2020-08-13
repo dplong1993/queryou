@@ -1,6 +1,9 @@
 const userImage = document.querySelector(".nav-bar-user-image-outer-container");
 
+window.addEventListener('DOMContentLoaded', () => {
+  console.log(window.location.href);
+});
+
 userImage.addEventListener('click', () => {
-  console.log('clci');
   window.location.href = './profile';
 });

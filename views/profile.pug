@@ -1,0 +1,17 @@
+extends layout.pug
+
+include include/nav-bar.pug
+
+append head
+  //- script(src="/public/js/home.js" type="module" defer)
+  script(src="/public/js/logout.js" type="module" defer)
+  script(src="/public/js/nav-btns.js" type="module" defer)
+  link(rel="stylesheet" href="/public/css/profile.css")
+  link(rel="stylesheet" href="/public/css/nav-bar.css")
+
+
+block content
+  +navBar()
+  h1 Profile Page Coming Soon!
+  div.log-out-btn-container
+    div.log-out Log-out

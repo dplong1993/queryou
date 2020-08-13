@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Topic.init({
     description: {
-      datatype: DataTypes.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: {

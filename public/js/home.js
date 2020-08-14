@@ -26,9 +26,19 @@ const populateAnswersList = async () => {
                 </div>
                 <div class="answer">
                     <div class="answer-header">
-                        Updated ${answer.User.username} · ${timestamp}
-                    </div>                
+                        ${answer.User.username} · Updated ${timestamp}
+                    </div>   
+                    <div class="answer-profile">
+                        ${answer.User.description}
+                    </div>
+                    <div class="answer-question">
+                        ${answer.Question.content}
+                    </div> 
+                    <div class="answer-answer">
+                        ${answer.content}
+                    </div>               
                 </div>
+                
             </li>
         `;
         answersList.innerHTML += answerLi;

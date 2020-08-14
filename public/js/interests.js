@@ -21,14 +21,11 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
         const topicElement = document.createElement("div");
         topicElement.classList.add("topic-tile");
         topicElement.setAttribute("name", topic.name);
-        // const check = document.createElement("input");
-        // check.setAttribute("type", "checkbox");
-        // check.setAttribute("checked", "unchecked");
-        // check.setAttribute("name",topic.name)
-        // topicElement.appendChild(check);
-        // const checkmark = document.createElement("div");
-        // checkmark.classList.add("checkmark");
-        // topicElement.appendChild(checkmark);
+        const checkmark = document.createElement("div");
+        checkmark.classList.add("checkmark");
+        checkmark.classList.add("checkbox");
+        checkmark.setAttribute("name", topic.name);
+        topicElement.appendChild(checkmark);
         const topicTitle = document.createElement("div");
         topicTitle.classList.add("topic-title");
         topicTitle.innerHTML = topic.name;
@@ -36,6 +33,31 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
         const checkbox = document.createElement("input");
         topicContainer.appendChild(topicElement);
     }
+
+    const topicTiles = document.querySelectorAll(".topic-tile");
+    console.log(topicTiles);
+    for (let tile of topicTiles) {
+        tile.addEventListener("click", (e)=>{
+            console.log("anything?");
+            const checkbox = e.target.querySelector(".checkbox");
+            checkbox.classList.toggle("checked");
+
+            enoughTopics();
+        })
+    }
+
+
+    document.addEventListener("submit", async (event)=>{
+
+        const body = {userId: id, }
+        const res = await fetch('/api/interests', {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
+    })
 });
 
 
@@ -43,13 +65,19 @@ const enoughTopics = ()=>{
     const checked = document.querySelectorAll(".checkmark");
     let count = 0;
     for (let i = 0; i<checked.length; i++){
-        if (checked.classList.contains("checked")){
+        if (checked[i].classList.contains("checked")){
             count++;
         }
     }
-    if(count>=5){
-        const button = document.querySelector("button");
-        button.classList.remove("disabled")
-        button.classList.add("valid");
+    if(count>=3){
+        const nextButton = document.querySelector(".next");
+        nextButton.classList.remove("blocked");
+        const moreButton = document.querySelector(".more");
+        moreButton.classList.add("blocked");
+    } else {
+        const nextButton = document.querySelector(".next");
+        nextButton.classList.add("blocked");
+        const moreButton = document.querySelector(".more");
+        moreButton.classList.remove("blocked");
     }
 };

@@ -107,6 +107,10 @@ body{
     justify-content: space-between;
 }
 
+.topic-tile:hover {
+    cursor: pointer;
+}
+
 .topic-title{
     color: white;
     font-weight: bold;
@@ -173,7 +177,13 @@ button{
     height: 38px;
 }
 
+.disabled{
+    opacity: 50%;
+}
 
+.blocked {
+    display: none;
+}
 
 #footer {
     position: relative;
@@ -208,7 +218,7 @@ button{
 
 
   /* Create a custom checkbox */
-  .checkmark {
+  .checkbox {
     position: absolute;
     top: 4px;
     right: 4px;
@@ -216,28 +226,20 @@ button{
     width: 32px;
     background-color: #eee;
     border-radius: 1000px;
+    opacity: 75%;
   }
 
 
   /* When the checkbox is checked, add a blue background */
-  .topic-tile input:checked ~ .checkmark {
+  .checked{
     background-color: #2d69ff;
+    opacity: 100%;
   }
 
   /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark::after {
+  .checked::after {
     content: "";
     position: absolute;
-    display: none;
-  }
-
-  /* Show the checkmark when checked */
-  .topic-tile input:checked ~ .checkmark::after {
-    display: block;
-  }
-
-  /* Style the checkmark/indicator */
-  .topic-tile .checkmark::after {
     left: 11px;
     top: 5px;
     width: 8px;

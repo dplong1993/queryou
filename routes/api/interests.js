@@ -17,11 +17,12 @@ router.get('/interests', routeHandler(async(req, res, next) =>{
     res.json({id: user.id, topics: topics});
 }));
 
+
 //signup route
 router.post('/interests',
 //   csrfProtection,
   routeHandler(async (req, res, next) => {
-
+    const { email, username, firstName, lastName, description, password} = req.body;
 }));
 
 

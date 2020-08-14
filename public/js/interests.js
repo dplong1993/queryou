@@ -25,6 +25,7 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
         checkmark.classList.add("checkmark");
         checkmark.classList.add("checkbox");
         checkmark.setAttribute("name", topic.name);
+        checkmark.setAttribute("topicId", topic.id);
         topicElement.appendChild(checkmark);
         const topicTitle = document.createElement("div");
         topicTitle.classList.add("topic-title");
@@ -35,10 +36,8 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
     }
 
     const topicTiles = document.querySelectorAll(".topic-tile");
-    console.log(topicTiles);
     for (let tile of topicTiles) {
         tile.addEventListener("click", (e)=>{
-            console.log("anything?");
             const checkbox = e.target.querySelector(".checkbox");
             checkbox.classList.toggle("checked");
 
@@ -49,14 +48,18 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
 
     document.addEventListener("submit", async (event)=>{
 
-        const body = {userId: id, }
+        let body = [];
+        const topicTiles = document.querySelectorAll(".topic-tile .checked");
+        for (let topic in topicTiles){
+            body.push({userId: id, topicId: topic.topicId});
+        }
         const res = await fetch('/api/interests', {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
               "Content-Type": "application/json"
             }
-          });
+        });
     })
 });
 

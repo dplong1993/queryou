@@ -2,6 +2,7 @@ extends layout.pug
 
 include include/nav-bar.pug
 include include/answers-list.pug
+include include/topics-list.pug
 
 append head
   script(src="/public/js/home.js" type="module" defer)
@@ -19,3 +20,4 @@ block content
   main
     .feed 
       +answersList()
+      +topicsList()

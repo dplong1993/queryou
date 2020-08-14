@@ -15,14 +15,10 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
 
     const topicContainer = document.getElementById("topics");
     for (let topic of topicData){
-        const topicElement = document.createElement("li");
+        const topicElement = document.createElement("div");
         topicElement.classList.add("topic-tile");
         topicElement.setAttribute("name", topic.name);
         topicElement.innerHTML = topic.name;
-        const topicImage = document.createElement("img");
-        topicImage.setAttribute("src", "../images/topic.jpg");
-        topicImage.classList.add("topic-image");
-        topicElement.appendChild(topicImage);
         const checkbox = document.createElement("input");
         topicContainer.appendChild(topicElement);
     }

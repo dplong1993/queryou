@@ -83,7 +83,7 @@ body{
     flex: 1 1 0%;
 }
 
-#topic-tile {
+.topic-tile {
     box-sizing: border-box;
     direction: ltr;
     font: inherit;
@@ -96,6 +96,12 @@ body{
     background-color: black;
     text-align: inherit;
     overflow: hidden;
+    background-image: url("../images/topic.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    text-align: end;
 }
 
 /* #topic-image{

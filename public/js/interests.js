@@ -15,6 +15,7 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
 
     const topicContainer = document.getElementById("topics");
     for (let topic of topicData){
+        console.log(typeof topic.id);
         const topicLabel = document.createElement("label");
         topicLabel.setAttribute("for", topic.name);
         topicContainer.appendChild(topicLabel);
@@ -25,7 +26,7 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
         checkmark.classList.add("checkmark");
         checkmark.classList.add("checkbox");
         checkmark.setAttribute("name", topic.name);
-        checkmark.setAttribute("topicId", topic.id);
+        checkmark.setAttribute("topicid", topic.id);
         topicElement.appendChild(checkmark);
         const topicTitle = document.createElement("div");
         topicTitle.classList.add("topic-title");
@@ -47,12 +48,14 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
 
 
     document.addEventListener("submit", async (event)=>{
-
+        event.preventDefault();
         let body = [];
         const topicTiles = document.querySelectorAll(".topic-tile .checked");
-        for (let topic in topicTiles){
-            body.push({userId: id, topicId: topic.topicId});
+        console.log(topicTiles);
+        for (let topic of topicTiles){
+            body.push({userId: Number(id), topicId: Number(topic.getAttribute("topicid"))});
         }
+        console.log(body);
         const res = await fetch('/api/interests', {
             method: "POST",
             body: JSON.stringify(body),
@@ -60,6 +63,7 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
               "Content-Type": "application/json"
             }
         });
+        //window.location.href = '/';
     })
 });
 

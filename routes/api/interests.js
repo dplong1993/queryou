@@ -6,7 +6,7 @@ const {expiresIn} = require('../../config').jwtConfig;
 const db = require('../../db/models');
 const { Topic, UserTopic } = db;
 const { getUserToken, getUserFromToken } = require('../utils/auth');
-// const csrfProtection = require('csurf')({cookie: true});
+const csrfProtection = require('csurf')({cookie: true});
 
 
 router.get('/interests', routeHandler(async(req, res, next) =>{
@@ -20,12 +20,14 @@ router.get('/interests', routeHandler(async(req, res, next) =>{
 
 //signup route
 router.post('/interests',
-//   csrfProtection,
+  csrfProtection,
   routeHandler(async (req, res, next) => {
     const bodyArray = JSON.parse(req.body);
     for (let topic of bodyArray){
+      console.log("anything?");
       UserTopic.create({userId: topic.userId, topicId: topic.topicId});
     }
+    res.send("Hello");
 }));
 
 

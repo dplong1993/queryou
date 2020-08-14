@@ -79,9 +79,10 @@ body{
     flex-wrap: wrap;
     direction: ltr;
     box-sizing: border-box;
-
+    padding: 13px;
     flex: 1 1 0%;
 }
+
 
 .topic-tile {
     box-sizing: border-box;
@@ -91,6 +92,7 @@ body{
     padding: 0px;
     position: relative;
     flex-basis: calc(16.6% - 8px);
+    margin: 3px;
     box-shadow: rgba(0, 0, 0, 0.5) 0px -40px 20px inset;
     color: inherit;
     background-color: black;
@@ -99,18 +101,23 @@ body{
     background-image: url("../images/topic.jpg");
     background-position: center;
     background-size: cover;
-    height: 40px;
-    width: 40px;
-    text-align: end;
+    max-height: 111px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
 }
 
-/* #topic-image{
-    max-width: 40px;
-    max-height: 40px;
-} */
+.topic-title{
+    color: white;
+    font-weight: bold;
+    justify-content: flex-end;
+    margin: 6px 3px;
+    font-size: 16px;
+}
+
 
 #interests{
-    max-width: 760px;
+    max-width: 758px;
     width: 100%;
     height: 550px;
     background-color: white;
@@ -143,7 +150,7 @@ body{
 }
 
 #title-content {
-    margin-left: 10px;
+    margin-left: 16px;
     font-size: 19px;
     font-weight: bold;
     color: rgb(40, 40, 41);
@@ -165,6 +172,8 @@ button{
     margin: 10px;
     height: 38px;
 }
+
+
 
 #footer {
     position: relative;
@@ -188,19 +197,54 @@ button{
 
 
 
-/* custom checkboxes */
-
-
-
-/* empty check {
-    display: block;
-box-sizing: border-box;
-    direction: ltr;
+/* Hide the browser's default checkbox */
+.topic-tile input {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.75);
-    opacity: 50%;
-}
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
 
-filled check {
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    height: 32px;
+    width: 32px;
+    background-color: #eee;
+    border-radius: 1000px;
+  }
+
+
+  /* When the checkbox is checked, add a blue background */
+  .topic-tile input:checked ~ .checkmark {
+    background-color: #2d69ff;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark::after {
+    content: "";
+    position: absolute;
     display: none;
-} */
+  }
+
+  /* Show the checkmark when checked */
+  .topic-tile input:checked ~ .checkmark::after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .topic-tile .checkmark::after {
+    left: 11px;
+    top: 5px;
+    width: 8px;
+    height: 16px;
+    border: solid white;
+    border-width: 0 1.25px 1.25px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const userRouter = require('./users');
+const homeRouter = require('./home')
 const { environment } = require('../../config');
 const { ValidationError } = require('sequelize');
 const { getUserFromToken } = require('../utils/auth');
 
 //Sets up key of user on all reqs if there is a token in the cookies
 // and sets the value of the key to the user the token corresponds to.
+
 router.use(async (req, res, next) => {
   //Get the token from cookies
   const token = req.cookies.token;
@@ -25,7 +27,7 @@ router.use(async (req, res, next) => {
 });
 
 router.use('/users', userRouter);
-
+router.use('/home', homeRouter);
 router.use((err, req, res, next) => {
   if(err instanceof ValidationError){
     err.errors = err.errors.map(e => e.message);

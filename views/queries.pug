@@ -3,7 +3,7 @@ extends layout.pug
 include include/nav-bar.pug
 
 append head
-  //- script(src="/public/js/queries.js" type="module" defer)
+  script(src="/public/js/queries.js" type="module" defer)
   script(src="/public/js/logout.js" type="module" defer)
   script(src="/public/js/nav-btns.js" type="module" defer)
   link(rel="stylesheet" href="/public/css/queries.css")
@@ -11,6 +11,12 @@ append head
 
 block content
   +navBar()
-  h1 Queries Page Coming Soon!
+  main
+    .feed
+      .feed-header
+        .star
+          <svg width="16px" height="16px" viewBox="0 0 24 24"><g id="star" stroke="white" stroke-width="1.5" fill="white" fill-rule="evenodd" stroke-linejoin="round"><polygon id="Star" points="12 16.6175467 7.05572809 19.2169043 8 13.7113766 4 9.81234022 9.52786405 9.00909456 12 4 14.472136 9.00909456 20 9.81234022 16 13.7113766 16.9442719 19.2169043"></polygon></g></svg>
+        .star_text Questions For You
+      .questions_list
   div.log-out-btn-container
     div.log-out Log-out

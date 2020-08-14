@@ -3,7 +3,7 @@ const router = express.Router();
 
 const userRouter = require('./users');
 const homeRouter = require('./home')
-const testRouter = require('./test');
+//const testRouter = require('./test');
 const { environment } = require('../../config');
 const { ValidationError } = require('sequelize');
 const { getUserFromToken } = require('../utils/auth');
@@ -29,7 +29,7 @@ router.use(async (req, res, next) => {
 
 router.use('/users', userRouter);
 router.use('/home', homeRouter);
-router.use('/test', testRouter);
+//router.use('/test', testRouter);
 
 router.use((err, req, res, next) => {
   if(err instanceof ValidationError){

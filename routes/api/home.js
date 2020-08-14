@@ -11,41 +11,42 @@ const { User, Question, Answer, AnswerComment } = db;
 //         include: 
 //             {
 //                 model: Answer
-                // model: Answer, 
-                // include: {
-                //     model: Question,
-                //     include: {
-                //         model: User
-                //     }
-                //},
-                
-           // }
-            // {
-            //     model: User,
-            //     attributes: ['username', 'description']
-            // },
-            // {
-            //     model: Question,
-            //     attributes: ['content', 'createdAt', 'updatedAt']
-            // }, 
-            // {
-            //     model: AnswerComment,
-            //     attributes: ['content', 'ownerId', 'createdAt', 'updatedAt']
-            // }
+// model: Answer, 
+// include: {
+//     model: Question,
+//     include: {
+//         model: User
+//     }
+//},
+
+// }
+// {
+//     model: User,
+//     attributes: ['username', 'description']
+// },
+// {
+//     model: Question,
+//     attributes: ['content', 'createdAt', 'updatedAt']
+// }, 
+// {
+//     model: AnswerComment,
+//     attributes: ['content', 'ownerId', 'createdAt', 'updatedAt']
+// }
 //     });
 
-    
+
 //     res.json({ answerComments })
 // }));
 
 router.get('/', routeHandler(async (req, res) => {
-    const questions = await Question.findAll({
-       include: [{
-        model: User,
-        attributes: ['username', 'description']
-       }] 
+    const answers = await Answer.findAll({
+        include: [
+            { model: Question, attributes: ['content'] },
+            { model: User, attributes: ['username','description'] },
+            { model: AnswerComment , attributes: ['content', 'createdAt', 'updatedAt']}
+        ]
     });
-    res.json({ questions })
+    res.json({ answers })
 }));
 
 module.exports = router;

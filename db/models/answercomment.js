@@ -11,12 +11,29 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      AnswerComment.belongsTo(models.User, {foreignKey: "ownerId"});
+      AnswerComment.belongsTo(models.Answer, {foreignKey: "answerId"});
     }
   };
   AnswerComment.init({
-    content: DataTypes.STRING,
-    answerId: DataTypes.INTEGER,
-    ownerId: DataTypes.INTEGER
+    content: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: {
+          args: [1, 1000],
+          msg: "Content of commment must be between 1 and 1000 characters in length."
+        }
+      }
+    },
+    answerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    ownerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'AnswerComment',

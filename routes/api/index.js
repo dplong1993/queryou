@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const userRouter = require('./users');
-const questionRouter = require('./queries');
+const queriesRouter = require('./queries');
 const interestsRouter = require('./interests');
 const { environment } = require('../../config');
 const { ValidationError } = require('sequelize');
@@ -27,7 +27,7 @@ router.use(async (req, res, next) => {
 });
 
 router.use('/users', userRouter);
-router.use('/queries', questionRouter);
+router.use('/queries', queriesRouter);
 // router.use('/test', testRouter);
 router.use('/interests', interestsRouter);
 

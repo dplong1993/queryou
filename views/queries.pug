@@ -18,5 +18,34 @@ block content
           <svg width="16px" height="16px" viewBox="0 0 24 24"><g id="star" stroke="white" stroke-width="1.5" fill="white" fill-rule="evenodd" stroke-linejoin="round"><polygon id="Star" points="12 16.6175467 7.05572809 19.2169043 8 13.7113766 4 9.81234022 9.52786405 9.00909456 12 4 14.472136 9.00909456 20 9.81234022 16 13.7113766 16.9442719 19.2169043"></polygon></g></svg>
         .star_text Questions For You
       .questions_list
+        each question in questions
+          .question-holder
+            .question
+              .question-id.hidden #{question.id}
+              .question-header Question add · topicName
+                .hide_question-button
+                  <svg width="24px" height="24px" viewBox="0 0 24 24"><g id="small_close" class="icon_svg-stroke" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke="#666666" stroke-width="1.5"><path d="M12,6 L12,18" transform="translate(12.000000, 12.000000) rotate(45.000000) translate(-12.000000, -12.000000) "></path><path d="M18,12 L6,12" transform="translate(12.000000, 12.000000) rotate(45.000000) translate(-12.000000, -12.000000) "></path></g></svg>
+              .question-content #{question.content}
+              .question-answer_info
+                .question-answer_info-count No answer yet
+                .question-answer_info-timestamp · #{question.timestamp}
+              .question-footer
+                .answer-button
+                  <svg id="answer" width="24px" height="24px" viewBox="0 0 24 24"><g id="answer" transform="translate(2.500000, 3.500000)" stroke="none" stroke-width="1.5" fill="none" fill-rule="evenodd"><g id="pen" transform="translate(9.000000, 9.000000) rotate(-315.000000) translate(-9.000000, -9.000000) translate(7.000000, -1.000000)"><path d="M2,8.8817842e-16 L2,8.8817842e-16 L2,8.8817842e-16 C3.1045695,6.85269983e-16 4,0.8954305 4,2 L4,16 L2.00256278,20 L0,16 L0,2 L0,2 C-1.35267774e-16,0.8954305 0.8954305,1.09108686e-15 2,8.8817842e-16 Z" id="pen_body" class="icon_svg-stroke" stroke="#2e69ff" stroke-linecap="round" stroke-linejoin="round"></path><polygon id="pen_tip" class="icon_svg-fill_as_stroke" fill="#666" transform="translate(2.000000, 18.750000) scale(1, -1) translate(-2.000000, -18.750000) " points="2 17.5 3.25 20 0.75 20"></polygon></g><path d="M12,16 L17,16 L17,11 M7,1 L2,1 L2,6" id="bg" class="icon_svg-stroke" stroke="#2e69ff" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+                  .button-text Answer
+              .answer-form.hidden
+                .user_info
+                  .user_image
+                    <img id="user" src="../public/images/new-user.png">
+                  .user_text
+                    .user_name User Name
+                    .user_description User Description
+                div
+                  form(id="answer-form")
+                    input(type="hidden" name="_csrf" value=csrf)
+                    .answer_content
+                      textarea(id="answer-text" name="answer" placeholder="Write your answer")
+                    .answer-form-footer
+                      button(type="submit" class="submit") Submit
   div.log-out-btn-container
     div.log-out Log-out

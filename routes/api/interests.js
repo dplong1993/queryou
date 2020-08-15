@@ -9,7 +9,7 @@ const { getUserToken, getUserFromToken } = require('../utils/auth');
 const csrfProtection = require('csurf')({cookie: true});
 
 
-router.get('/interests', routeHandler(async(req, res, next) =>{
+router.get('/', routeHandler(async(req, res, next) =>{
     const token = req.cookies.token;
     const user = await getUserFromToken(token);
     const topics = await Topic.findAll();
@@ -19,16 +19,14 @@ router.get('/interests', routeHandler(async(req, res, next) =>{
 
 
 //signup route
-router.post('/interests',
-  ()=>{console.log("here")},
+router.post('/',
+  // ()=>{console.log("here")},
   csrfProtection,
   routeHandler(async (req, res, next) => {
     const bodyArray = JSON.parse(req.body);
     for (let topic of bodyArray){
-      console.log("anything?");
       UserTopic.create({userId: topic.userId, topicId: topic.topicId});
     }
-    //res.send("Hello");
 }));
 
 

@@ -1,10 +1,5 @@
-
-
-const form = document.querySelector('#signup-form');
-const topics = document.querySelector('#topics');
-
 window.addEventListener("DOMContentLoaded", async (event) => {
-    const res = await fetch("/api/interests/interests", {
+    const res = await fetch("/api/interests/", {
         method: "GET",
     });
     const data = await res.json();
@@ -55,24 +50,24 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             body.push({ userId: Number(id), topicId: Number(topic.getAttribute("topicid")) });
         }
         console.log(body);
-        const res = await fetch('/api/interests', {
+        const res = await fetch('/api/interests/', {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             }
         });
-        const data = await res.json();
-        if (!res.ok) {
-            const { message, errors } = data;
-            const errorLi = document.createElement('li');
-            errorLi.innerHTML = errors[0];
-            errorsContainer.appendChild(errorLi);
-            const banner = document.getElementById("banner");
-            banner.classList.add("isVisible");
-            setTimeout(() => banner.classList.remove("isVisible"), 7000);
-            return
-        }
+        // const data = await res.json();
+        // if (!res.ok) {
+        //     const { message, errors } = data;
+        //     const errorLi = document.createElement('li');
+        //     errorLi.innerHTML = errors[0];
+        //     errorsContainer.appendChild(errorLi);
+        //     const banner = document.getElementById("banner");
+        //     banner.classList.add("isVisible");
+        //     setTimeout(() => banner.classList.remove("isVisible"), 7000);
+        //     return
+        // }
         //window.location.href = '/';
     })
 });

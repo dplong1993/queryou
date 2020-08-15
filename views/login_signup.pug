@@ -21,6 +21,7 @@ block content
             input(id="password" type="password" name="password" placeholder="Password" required)
             button(class="login" type="submit") Login
         form#demo-form
+            input(type='hidden' name='_csrf' value=csrf)
             input(id="demo-email" type="hidden" name="demo-email" value="demo@user.io")
             input(id="demo-password" type="hidden" name="demo-password" value="password")
             button(class="demo" type="submit") Demo

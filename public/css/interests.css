@@ -8,11 +8,8 @@ body{
     left: 0;
     background: #fff;
     width: 100%;
-    height: 50px;
+    height: 55px;
     font-weight: 500;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     border-bottom-style: solid;
     border-width: 1px;
     border-color: #dee0e1;
@@ -22,6 +19,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    justify-content: center;
 }
 
 #progress-bar{
@@ -71,10 +69,59 @@ body{
 
 #topics{
     overflow-y: auto;
+    height: 430px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-width: 1px;
+    border-color: #dee0e1;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    direction: ltr;
+    box-sizing: border-box;
+    padding: 13px;
+    flex: 1 1 0%;
 }
 
+
+.topic-tile {
+    box-sizing: border-box;
+    direction: ltr;
+    font: inherit;
+    outline: inherit;
+    padding: 0px;
+    position: relative;
+    flex-basis: calc(16.6% - 8px);
+    margin: 3px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px -40px 20px inset;
+    color: inherit;
+    background-color: black;
+    text-align: inherit;
+    overflow: hidden;
+    background-image: url("../images/topic.jpg");
+    background-position: center;
+    background-size: cover;
+    max-height: 111px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+}
+
+.topic-tile:hover {
+    cursor: pointer;
+}
+
+.topic-title{
+    color: white;
+    font-weight: bold;
+    justify-content: flex-end;
+    margin: 6px 3px;
+    font-size: 16px;
+}
+
+
 #interests{
-    max-width: 760px;
+    max-width: 758px;
     width: 100%;
     height: 550px;
     background-color: white;
@@ -93,7 +140,7 @@ body{
     left: 0;
     background: #F7F7FB;
     width: 100%;
-    height: 50px;
+    height: 59px;
     font-weight: 500;
     display: flex;
     flex-direction: row;
@@ -107,7 +154,7 @@ body{
 }
 
 #title-content {
-    margin-left: 10px;
+    margin-left: 16px;
     font-size: 19px;
     font-weight: bold;
     color: rgb(40, 40, 41);
@@ -115,4 +162,91 @@ body{
 
 button{
     position: relative;
+    box-sizing: border-box;
+    direction: ltr;
+    font: inherit;
+    outline: none;
+    padding: 7px 20px;
+    border-width: 0px;
+    color: white;
+    border-radius: 1000px;
+    background-color: #2e69ff;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 10px;
+    height: 38px;
 }
+
+.disabled{
+    opacity: 50%;
+}
+
+.blocked {
+    display: none;
+}
+
+#footer {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: #F7F7FB;
+    width: 100%;
+    height: 59px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dee0e1;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    justify-content: flex-end;
+}
+
+
+
+/* Hide the browser's default checkbox */
+.topic-tile input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+
+  /* Create a custom checkbox */
+  .checkbox {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    height: 32px;
+    width: 32px;
+    background-color: #eee;
+    border-radius: 1000px;
+    opacity: 75%;
+  }
+
+
+  /* When the checkbox is checked, add a blue background */
+  .checked{
+    background-color: #2d69ff;
+    opacity: 100%;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checked::after {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 5px;
+    width: 8px;
+    height: 16px;
+    border: solid white;
+    border-width: 0 1.25px 1.25px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

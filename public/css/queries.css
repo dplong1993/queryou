@@ -13,11 +13,19 @@
   background-color: rgba(247,247,247,1);
 }
 
+.button-text{
+  font-weight: 500;
+  font-size: 14px;
+  color: #636466;
+  text-align: center;
+  cursor: pointer;
+}
+
 .feed {
   box-sizing: border-box;
   display: flex;
   flex-flow: column;
-  width: 40%;
+  width: 48%;
   margin: auto;
   margin-top: 50px;
   font-weight: 500;
@@ -48,6 +56,23 @@ h1 {
   font-weight: 500;
   color: #636466;
 }
+
+.hide_question-button{
+  box-sizing: border-box;
+  padding: 7px;
+  padding-left: 11px;
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: -9px;
+  border-radius: 1000px;
+  cursor: pointer;
+}
+
+.hide_question-button:hover{
+  background-color: rgba(0,0,0,0.03);
+}
+
 
 .log-out{
   display: flex;
@@ -105,9 +130,14 @@ h1 {
 }
 
 .question-header{
+  display: flex;
+  align-items: flex-end;
+  flex-flow: row;
+  height: 18px;
   margin-bottom: 8px;
   font-size: 13px;
   color: #939598;
+  position: relative;
 }
 
 .star{

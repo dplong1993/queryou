@@ -20,11 +20,14 @@ router.get('/', routeHandler(async(req, res, next) =>{
 
 //signup route
 router.post('/',
-  // ()=>{console.log("here")},
   csrfProtection,
   routeHandler(async (req, res, next) => {
-    const bodyArray = JSON.parse(req.body);
-    for (let topic of bodyArray){
+    const bodyArray = req.body;
+    // console.log(bodyArray);
+    count = 0;
+    for (let topic of bodyArray.requests){
+      count++;
+      console.log(count);
       UserTopic.create({userId: topic.userId, topicId: topic.topicId});
     }
 }));

@@ -44,14 +44,24 @@ const populateQuestionsList = async () => {
               </div>
             </div>
           </div>
-          <div class="Answer-form">
-            <div class="User_info">
-              User Info
+          <div class="answer-form">
+            <div class="user_info">
+              <div class="user_image">
+                <img id="user" src="../public/images/new-user.png">
+              </div>
+              <div class="user_text">
+                <div class="user_name">
+                  User Name
+                </div>
+                <div class="user_description">
+                  User Description
+                </div>
+              </div>
             </div>
-            <div class="Answer_Content">
-              <textarea id="Answer-text" placeholder="Write your answer"></textarea>
+            <div class="answer_Content">
+              <textarea id="answer-text" placeholder="Write your answer"></textarea>
             </div>
-            <div class="Answer-form-footer">
+            <div class="answer-form-footer">
               Button City
             </div>
           </div>

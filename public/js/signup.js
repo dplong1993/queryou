@@ -46,5 +46,5 @@ form.addEventListener('submit', async (e) => {
     return
   }
 
-  window.location.href = '/';
+  window.location.href = '/interests';
 });

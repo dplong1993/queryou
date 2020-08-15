@@ -21,5 +21,6 @@ block content
         #topics
         #footer
             button(type="button" class="more disabled") Follow 3 or More Topics to Continue
-            form
+            form#csrf-form
+                input(type='hidden' name='_csrf' value=csrf)
                 button(type="submit" class="next blocked") Next

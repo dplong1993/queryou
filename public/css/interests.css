@@ -107,6 +107,10 @@ body{
     justify-content: space-between;
 }
 
+.topic-tile *{
+    pointer-events: none;
+}
+
 .topic-tile:hover {
     cursor: pointer;
 }

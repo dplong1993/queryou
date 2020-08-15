@@ -1,10 +1,9 @@
-// import {Topic} from "../../db/models/topics.js";
 
 
 const form = document.querySelector('#signup-form');
 const topics = document.querySelector('#topics');
 
-window.addEventListener("DOMContentLoaded", async (event)=>{
+window.addEventListener("DOMContentLoaded", async (event) => {
     const res = await fetch("/api/interests/interests", {
         method: "GET",
     });
@@ -14,7 +13,7 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
     const topicData = data.topics;
 
     const topicContainer = document.getElementById("topics");
-    for (let topic of topicData){
+    for (let topic of topicData) {
         console.log(typeof topic.id);
         const topicLabel = document.createElement("label");
         topicLabel.setAttribute("for", topic.name);
@@ -38,7 +37,7 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
 
     const topicTiles = document.querySelectorAll(".topic-tile");
     for (let tile of topicTiles) {
-        tile.addEventListener("click", (e)=>{
+        tile.addEventListener("click", (e) => {
             const checkbox = e.target.querySelector(".checkbox");
             checkbox.classList.toggle("checked");
 
@@ -47,36 +46,47 @@ window.addEventListener("DOMContentLoaded", async (event)=>{
     }
 
 
-    document.addEventListener("submit", async (event)=>{
+    document.addEventListener("submit", async (event) => {
         event.preventDefault();
         let body = [];
         const topicTiles = document.querySelectorAll(".topic-tile .checked");
         console.log(topicTiles);
-        for (let topic of topicTiles){
-            body.push({userId: Number(id), topicId: Number(topic.getAttribute("topicid"))});
+        for (let topic of topicTiles) {
+            body.push({ userId: Number(id), topicId: Number(topic.getAttribute("topicid")) });
         }
         console.log(body);
         const res = await fetch('/api/interests', {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
-              "Content-Type": "application/json"
+                "Content-Type": "application/json"
             }
         });
+        const data = await res.json();
+        if (!res.ok) {
+            const { message, errors } = data;
+            const errorLi = document.createElement('li');
+            errorLi.innerHTML = errors[0];
+            errorsContainer.appendChild(errorLi);
+            const banner = document.getElementById("banner");
+            banner.classList.add("isVisible");
+            setTimeout(() => banner.classList.remove("isVisible"), 7000);
+            return
+        }
         //window.location.href = '/';
     })
 });
 
 
-const enoughTopics = ()=>{
+const enoughTopics = () => {
     const checked = document.querySelectorAll(".checkmark");
     let count = 0;
-    for (let i = 0; i<checked.length; i++){
-        if (checked[i].classList.contains("checked")){
+    for (let i = 0; i < checked.length; i++) {
+        if (checked[i].classList.contains("checked")) {
             count++;
         }
     }
-    if(count>=3){
+    if (count >= 3) {
         const nextButton = document.querySelector(".next");
         nextButton.classList.remove("blocked");
         const moreButton = document.querySelector(".more");

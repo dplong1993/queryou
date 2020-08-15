@@ -20,6 +20,7 @@ router.get('/interests', routeHandler(async(req, res, next) =>{
 
 //signup route
 router.post('/interests',
+  ()=>{console.log("here")},
   csrfProtection,
   routeHandler(async (req, res, next) => {
     const bodyArray = JSON.parse(req.body);
@@ -27,7 +28,7 @@ router.post('/interests',
       console.log("anything?");
       UserTopic.create({userId: topic.userId, topicId: topic.topicId});
     }
-    res.send("Hello");
+    //res.send("Hello");
 }));
 
 

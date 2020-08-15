@@ -47,8 +47,8 @@ router.use((err, req, res, next) => {
   });
 });
 
-router.use('*', (req, res) => {
-  res.status(404).json({message: 'route does not exist'});
-})
+// router.use('*', (req, res) => {
+//   res.status(404).json({message: 'route does not exist'});
+// })
 
 module.exports = router;

@@ -54,7 +54,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         const formData = new FormData(form);
         const _csrf = formData.get('_csrf');
 
-        const fetchBody = {requests, _csrf};
+        const fetchBody = { requests, _csrf };
 
         const res = await fetch('/api/interests', {
             method: "POST",
@@ -90,7 +90,7 @@ const enoughTopics = () => {
 };
 
 
- function getCsrfValue(){
+function getCsrfValue() {
     const rawDough = document.cookie;
     const cookies = rawDough.split("=");
     const csrfCookieValue = cookies[1].split(";")[0];

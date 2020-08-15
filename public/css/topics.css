@@ -59,3 +59,9 @@ html {
   color: #282829;
   padding: 8px 16px 0px 16px;
 }
+
+img{
+  border-radius: 100%;
+  height: 24px;
+  width: 24px;
+}

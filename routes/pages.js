@@ -5,7 +5,7 @@ const db = require("../db/models");
 const { getUserFromToken } = require('./utils/auth');
 const { Op } = require('sequelize');
 const { routeHandler } = require('./utils');
-const {User, Question} = db;
+const {Question, Topic, Answer, QuestionTopic} = db;
 
 const csrfProtection = require('csurf')({cookie: true});
 
@@ -20,26 +20,45 @@ router.get('/interests', csrfProtection, (req, res)=>{
 });
 
 
-//Queries page router
-router.get('/queries', csrfProtection, routeHandler(async(req, res) => {
-  if(!req.user) res.redirect('/login_signup');
-  const questions = await Question.findAll({
+const getQuestions = async (user) => {
+  return await Question.findAll({
     where: {
       ownerId: {
-        [Op.not]: req.user.id
+        [Op.not]: user.id
       }
     }
   });
+}
+
+const createTimestamps = (questions) => {
   for(let question of questions){
     const createdAt = new Date(question.createdAt);
+    const timeOptions = {
+      minute: "numeric",
+      hour: "numeric",
+    };
+
     const dateOptions = {
         year: "numeric",
         month: "short",
         day: "numeric"
     };
-    const timestamp = createdAt.toLocaleString("en-US", dateOptions);
+    const timestamp =
+      createdAt.toLocaleString("en-US", timeOptions) +
+      " · " +
+      createdAt.toLocaleString("en-US", dateOptions);
+
     question.timestamp = timestamp;
   }
+}
+
+//Queries page router
+router.get('/queries', csrfProtection, routeHandler(async(req, res) => {
+  if(!req.user) res.redirect('/login_signup');
+
+  const questions = await getQuestions(req.user);
+
+  createTimestamps(questions);
   res.render("queries.pug", { questions, csrf: req.csrfToken() });
 }));
 

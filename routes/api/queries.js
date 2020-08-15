@@ -3,11 +3,8 @@ const router = express.Router();
 const {routeHandler, handleValidationErrors} = require("../utils");
 const { Op } = require("sequelize");
 
-const bcrypt = require('bcryptjs');
-const {expiresIn} = require('../../config').jwtConfig;
 const db = require('../../db/models');
-const { Answer } = db;
-const { getUserFromToken } = require('../utils/auth');
+const { Answer, Question } = db;
 const csrfProtection = require('csurf')({cookie: true});
 
 const {check} = require('express-validator');
@@ -36,6 +33,11 @@ router.post("/",
     const answer = await Answer.create({content, questionId, ownerId});
 
     res.json({ answer });
-  }));
+}));
+
+router.get("/", routeHandler(async(req, res) => {
+  const questions = await Question.findAll({include: {model: Answer}});
+  res.json({questions});
+}));
 
 module.exports = router;

@@ -1,9 +1,31 @@
 const questionsList = document.querySelector(".questions_list");
+const answerButtons = document.querySelectorAll('.answer-button');
+const answerFormHolders = document.querySelectorAll('.answer-form');
+const answerForms = document.querySelectorAll("#answer-form");
+const answerCounts = document.querySelectorAll(".question-answer_info-count");
+
+const getQuestions = async() => {
+  const res = await fetch("/api/queries/");
+  const data = await res.json();
+  return data.questions;
+}
+
+const setAnswerCounts = (questions) => {
+  // console.log(answerCounts);
+  answerCounts.forEach((el, index)=> {
+    const count = questions[index+1].Answers.length;
+    // console.log(questions[index]);
+    if(count === 0) el.innerText = "No answer yet";
+    else if(count === 1) el.innerText = count + " Answer";
+    else el.innerText = questions[index].Answers.length + " Answers";
+  });
+}
 
 window.addEventListener("DOMContentLoaded", async () => {
-  const answerButtons = document.querySelectorAll('.answer-button');
-  const answerFormHolders = document.querySelectorAll('.answer-form');
-  const answerForms = document.querySelectorAll("#answer-form");
+  const questions = await getQuestions();
+  // console.log(questions[3].Answers.length);
+  setAnswerCounts(questions);
+
   answerButtons.forEach((answerButton, index) => {
     answerButton.addEventListener('click', (e) => {
       answerFormHolders[index].classList.remove("hidden");

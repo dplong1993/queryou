@@ -28,7 +28,6 @@ router.use(async (req, res, next) => {
 
 router.use('/users', userRouter);
 router.use('/queries', queriesRouter);
-// router.use('/test', testRouter);
 router.use('/interests', interestsRouter);
 
 router.use((err, req, res, next) => {

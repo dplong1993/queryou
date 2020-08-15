@@ -63,7 +63,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                 "Content-Type": "application/json",
             }
         });
-        //window.location.href = '/';
+        window.location.href = '/';
     })
 });
 

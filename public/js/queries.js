@@ -44,7 +44,7 @@ const populateQuestionsList = async () => {
               </div>
             </div>
           </div>
-          <div class="answer-form">
+          <div class="answer-form hidden">
             <div class="user_info">
               <div class="user_image">
                 <img id="user" src="../public/images/new-user.png">
@@ -58,11 +58,13 @@ const populateQuestionsList = async () => {
                 </div>
               </div>
             </div>
-            <div class="answer_Content">
+            <div class="answer_content">
               <textarea id="answer-text" placeholder="Write your answer"></textarea>
             </div>
             <div class="answer-form-footer">
-              Button City
+              <button class="submit">
+                Submit
+              </button>
             </div>
           </div>
         </div>
@@ -73,4 +75,10 @@ const populateQuestionsList = async () => {
 
 window.addEventListener("DOMContentLoaded", async () => {
   await populateQuestionsList();
+
+  const answerButton = document.querySelector('.answer-button');
+  answerButton.addEventListener('click', () => {
+    const answerForm = document.querySelector('.answer-form');
+    answerForm.classList.remove("hidden");
+  });
 });

@@ -80,7 +80,9 @@ router.get('/profile', (req, res) => {
   res.render("profile.pug");
 });
 
-router.get('/:id', routeHandler(async(req, res) => {
+router.get('/:id',
+  csrfProtection,
+  routeHandler(async(req, res) => {
   if(!req.user) res.redirect('/login_signup');
 
   const contentWithDash = req.params.id;
@@ -107,7 +109,7 @@ router.get('/:id', routeHandler(async(req, res) => {
         }
       ]});
   // console.log(question, question.QuestionTopics[0].Topic.name);
-  res.render("questionContent.pug", {question});
+  res.render("questionContent.pug", { question, csrf: req.csrfToken() });
 }));
 
 //Home page router

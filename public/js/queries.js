@@ -92,7 +92,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       const content = formData.get("answer");
       const _csrf = formData.get("_csrf");
       const questionId = Number(questionIds[index].innerText);
-      console.log(questionId);
+      // console.log(questionId);
       const body = { content, questionId, _csrf};
 
       const res = await fetch('/api/queries', {

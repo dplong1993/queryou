@@ -13,6 +13,7 @@ module.exports = {
       {questionId: questions[1].id, topicId: topics[0].id},
       {questionId: questions[1].id, topicId: topics[1].id},
       {questionId: questions[2].id, topicId: topics[2].id},
+      {questionId: questions[3].id, topicId: topics[1].id},
     ], { fields: ['questionId', 'topicId']});
   },
 

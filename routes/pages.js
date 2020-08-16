@@ -106,7 +106,7 @@ router.get('/:id', routeHandler(async(req, res) => {
           }
         }
       ]});
-  console.log(question, question.QuestionTopics[0].Topic.name);
+  // console.log(question, question.QuestionTopics[0].Topic.name);
   res.render("questionContent.pug", {question});
 }));
 

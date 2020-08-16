@@ -73,7 +73,7 @@ router.post('/unfollow',
         if (!previousEntry) {
             Topic.create({ownerId, name, description});
             const newEntry = await Topic.findOne({ where: { name: name} });
-        res.redirect(`/${newEntry.id}`);
+        // res.redirect(`/${newEntry.id}`);
         }
         res.json();
     }));

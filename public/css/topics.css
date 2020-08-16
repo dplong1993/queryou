@@ -95,7 +95,7 @@ html {
 
 }
 
-#scroll-link {
+#create-topic {
   background-color: white;
   height: 30px;
   width:fit-content;
@@ -113,7 +113,7 @@ html {
   margin-top: 4px;
 }
 
-#scroll-link *{
+#create-topic *{
   color: #2e69ff;
 }
 
@@ -185,7 +185,7 @@ html {
   text-align: center;
 }
 
-.follow-button.unfollowed{
+.follow-button.followed{
   position: relative;
   bottom: -84px;
   height: fit-content;
@@ -201,19 +201,19 @@ html {
   box-shadow: rgba(46, 105, 255, 0.09) 0px 0px 0px 1px inset;
 }
 
-.unfollowed .button-text{
+.followed .button-text{
   padding: 0px 5px 0px 5px;
   color: #2e69ff;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
   font-weight: 500;
 }
 
-.unfollowed .follow-count{
+.followed .follow-count{
   color: #2e69ff;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
-.follow-button{
+.follow-button.unfollowed{
   position: relative;
   bottom: -84px;
   height: fit-content;
@@ -229,14 +229,98 @@ html {
   box-shadow: rgba(46, 105, 255, 0.09) 0px 0px 0px 1px inset;
 }
 
-.button-text{
+.unfollowed .button-text{
   padding: 0px 5px 0px 5px;
   color: #636466;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
   font-weight: 500;
 }
 
-.follow-count{
+.unfollowed .follow-count{
   color: #636466;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+
+#create-topic-div{
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(36,36,36,0.9);
+  z-index: 3;
+}
+
+#create-topic-form-div{
+  position: relative;
+  box-sizing: border-box;
+  width: 608px;
+  height: 486px;
+  top: 220px;
+  background-color: white;
+  z-index: 4;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#form-instructions {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(40, 40, 41);
+  padding: 15px 16px 0px;
+}
+
+#form-instructions-continued {
+  color: #636466;
+  font-size: 15px;
+  padding: 6px 16px 8px;
+}
+
+.label {
+  font-weight: 500;
+      font-size: 15px;
+      color: #282829;
+      padding: 15px 16px 8px;
+}
+
+.create-input{
+  border: none;
+  border-bottom: solid 1px #ebf0ff;
+  width: 576px;
+  margin: 15px 16px 8px;
+  padding-bottom: 12px ;
+}
+
+
+#create-topic-footer{
+  position: absolute;
+  bottom: 0px;
+  width: 608px;
+  height: 54px;
+  border-top: solid 1px #ebf0ff;
+}
+
+
+#create-topic-button{
+  position: relative;
+  box-sizing: border-box;
+  direction: ltr;
+  font: inherit;
+  outline: none;
+  padding: 7px 20px;
+  border-width: 0px;
+  color: white;
+  border-radius: 1000px;
+  background-color: #2e69ff;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 10px;
+  height: 38px;
+  right: -510px;
+}
+
+
+#create-topic-button:hover{
+  cursor: pointer;
 }

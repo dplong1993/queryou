@@ -11,7 +11,7 @@ const csrfProtection = require('csurf')({ cookie: true });
 router.get('/', routeHandler(async (req, res, next) => {
     const token = req.cookies.token;
     const user = await getUserFromToken(token);
-    console.log(user);
+    // console.log(user);
     const userTopics = await UserTopic.findAll(
         {
             where: { userId: Number(user.id) },
@@ -33,6 +33,7 @@ router.post('/follow',
         if (!previousEntry) {
             UserTopic.create({ userId: userId, topicId: topicId });
         }
+        res.json();
     }));
 //unfollow route
 router.post('/unfollow',
@@ -42,10 +43,38 @@ router.post('/unfollow',
 
         const previousEntry = await UserTopic.findOne({ where: { userId: userId, topicId: topicId } });;
         if (previousEntry) {
-            UserTopic.destroy({where: { userId: userId, topicId: topicId }});
+            previousEntry.destroy();
         }
+        res.json();
     }));
 
+    router.post('/new',
+    csrfProtection,
+    routeHandler(async (req, res, next) => {
+        const { ownerId, name, description } = req.body;
+
+        const previousEntry = await Topic.findOne({ where: { name: name} });
+        if (!previousEntry) {
+            Topic.create({ownerId, name, description});
+            const newEntry = await Topic.findOne({ where: { name: name} });
+        res.redirect(`/${newEntry.id}`);
+        }
+        res.json();
+    }));
+
+    router.get('/:id(\\d)',
+    csrfProtection,
+    routeHandler(async (req, res, next) => {
+        const { ownerId, name, description } = req.body;
+
+        const previousEntry = await Topic.findOne({ where: { name: name} });
+        if (!previousEntry) {
+            Topic.create({ownerId, name, description});
+            const newEntry = await Topic.findOne({ where: { name: name} });
+        res.redirect(`/${newEntry.id}`);
+        }
+        res.json();
+    }));
 
 
 module.exports = router;

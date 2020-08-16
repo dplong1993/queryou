@@ -14,7 +14,7 @@ block content
   #page-div
     #your-topics-container
       #your-topics-title Your Topics
-      button#scroll-link(href="#discover-topics-container")
+      button#create-topic
         <svg width="20px" height="20px" viewBox="0 0 24 24"><g class="icon_svg-stroke" stroke="#2e69ff" stroke-width="1.5" fill="none" fill-rule="evenodd"><path d="M12,7 L12,17" stroke-linecap="round"></path><path d="M7,12 L17,12" stroke-linecap="round"></path><circle cx="12" cy="12" r="9"></circle></g></svg>
         #button-contents Create a Topic
       //- button#scroll-link(href="#discover-topics-container")
@@ -26,4 +26,16 @@ block content
       #discover-topics-container
     div.log-out-btn-container
       div.log-out Log-out
+  #create-topic-div
+    #create-topic-form-div
+      #exit-button
+      #form-instructions Create a Topic
+      #form-instructions-continued Create a Topic to share your interests, curate content, host discussions, and more.
+      form#create-topic-form
+        #name-label(class="label") Name
+        input(type="text" name="name" class="create-input" placeholder="Enter a name for your Topic")
+        #description-label(class="label") About
+        input(type="text" name="description" class="create-input" placeholder="1-line description of your Space")
+        #create-topic-footer
+          button(type="submit")#create-topic-button Done
   meta("name"="_csrf" content=csrf)#_csrf

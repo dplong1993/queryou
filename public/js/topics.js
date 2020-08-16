@@ -78,8 +78,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         const followButton = document.createElement("button");
         followButton.setAttribute("type", "submit");
         followButton.classList.add("follow-button");
-        if()
-        followButton.classList.add("unfollowed");
+        //followButton.classList.add("unfollowed");
+        followButton.classList.add("followed");
 
         // const followSVG = document.createElement("svg");
 
@@ -100,48 +100,78 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     }
 
 
-    //const followButtons = document.querySelectorAll(".follow-button");
-    //for(let followButton in followButtons){
-    document.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        event.stopPropagation();
+    const followForms = document.querySelectorAll(".follow-form");
+    for (let followForm of followForms) {
+        followForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
 
-        if (event.target.classList.contains("unfollowed")) {
-            const form = event.target;
-            const formData = new FormData(form);
-            const userId = formData.get('userId');
-            const topicId = formData.get('topicId');
-            const _csrf = document.getElementById("_csrf")
-            console.log(_csrf.getAttribute("content"));
-            const fetchBody = { userId, topicId, _csrf: _csrf.getAttribute("content") };
-            console.log(fetchBody);
-            const res = await fetch('/api/topics/follow', {
-                method: "POST",
-                body: JSON.stringify(fetchBody),
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            });
-            event.target.classList.toggle("unfollowed")
-        } else {
-            const form = event.target;
-            const formData = new FormData(form);
-            const userId = formData.get('userId');
-            const topicId = formData.get('topicId');
-            const _csrf = document.getElementById("_csrf")
-            console.log(_csrf.getAttribute("content"));
-            const fetchBody = { userId, topicId, _csrf: _csrf.getAttribute("content") };
-            const res = await fetch('/api/topics/unfollow', {
+            if (event.target.childNodes[2].classList.contains("unfollowed")) {
+                const form = event.target;
+                const formData = new FormData(form);
+                const userId = formData.get('userId');
+                console.log(userId);
+                const topicId = formData.get('topicId');
+                console.log(topicId);
+                const _csrfElement = document.getElementById("_csrf")
+                const _csrf = _csrfElement.getAttribute("content")
+                const fetchBody = { userId, topicId, _csrf };
+                // console.log(fetchBody);
+                const res = await fetch('/api/topics/follow', {
+                    method: "POST",
+                    body: JSON.stringify(fetchBody),
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                });
+                event.target.childNodes[2].classList.toggle("unfollowed")
+                event.target.childNodes[2].classList.toggle("followed")
+                event.target.childNodes[2].childNodes[0].innerHTML = "Follow"
+            } else {
+                const form = event.target;
+                const formData = new FormData(form);
+                const userId = formData.get('userId');
+                console.log(userId);
+                const topicId = formData.get('topicId');
+                console.log(topicId);
+                const _csrfElement = document.getElementById("_csrf")
+                const _csrf = _csrfElement.getAttribute("content")
+                const fetchBody = { userId, topicId, _csrf };
+                // console.log(fetchBody);
+                const res = await fetch('/api/topics/follow', {
+                    method: "POST",
+                    body: JSON.stringify(fetchBody),
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                });
+                event.target.childNodes[2].classList.toggle("unfollowed")
+                event.target.childNodes[2].classList.toggle("followed")
+                event.target.childNodes[2].childNodes[0].innerHTML = "Following"
+            }
+        })
+    }
 
-                method: "POST",
-                body: JSON.stringify(fetchBody),
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            });
-            event.target.classList.toggle("unfollowed")
-        }
 
-    })
-    //}
+    const newTopicForm = document.getElementById("create-topic-div");
+    newTopicForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const form = e.target;
+        const formData = new FormData(form);
+        const ownerId = id;
+        console.log(ownerId);
+        const name = formData.get('name');
+        const description = formData.get("description");
+        const _csrfElement = document.getElementById("_csrf")
+        const _csrf = _csrfElement.getAttribute("content")
+        const fetchBody = { ownerId, name, description, _csrf };
+        console.log(fetchBody)
+        const res = await fetch('/api/topics/new', {
+            method: "POST",
+            body: JSON.stringify(fetchBody),
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+    });
 });

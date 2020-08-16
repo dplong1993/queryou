@@ -8,7 +8,6 @@ const { Topic, UserTopic } = db;
 const { getUserToken, getUserFromToken } = require('../utils/auth');
 const csrfProtection = require('csurf')({ cookie: true });
 
-
 router.get('/', routeHandler(async (req, res, next) => {
     const token = req.cookies.token;
     const user = await getUserFromToken(token);
@@ -18,13 +17,20 @@ router.get('/', routeHandler(async (req, res, next) => {
             where: { userId: Number(user.id) },
             include: { model: Topic }
         });
-    console.log(userTopics);
-    res.json({ id: user.id, userTopics: userTopics });
+    const Topics = await Topic.findAll({ include: { model: UserTopic } });
+
+    res.json({ id: user.id, userTopics: userTopics, Topics: Topics});
 }));
 
 
-//signup route
-router.post('/',
+//follow route
+router.post('/follow',
+    csrfProtection,
+    routeHandler(async (req, res, next) => {
+
+    }));
+//unfollow route
+router.post('/unfollow',
     csrfProtection,
     routeHandler(async (req, res, next) => {
 

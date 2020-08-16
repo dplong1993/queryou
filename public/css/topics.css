@@ -53,6 +53,8 @@ html {
   margin-right: auto;
 }
 
+
+
 #your-topics-title{
   font-size: 18px;
   font-weight: bold;
@@ -60,8 +62,181 @@ html {
   padding: 8px 16px 0px 16px;
 }
 
-img{
+.topic-logo{
   border-radius: 100%;
   height: 24px;
   width: 24px;
+}
+
+.topic-name {
+  line-height: 32px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #282829;
+}
+
+.topic-container {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #dee0e1;
+  padding-top: 5px;;
+  padding-bottom: 5px;
+}
+
+.topic-container:hover{
+  background-color: rgba(0,0,0,0.03)!important;
+}
+
+.topic-logo {
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-left: 16px;
+  margin-bottom: 6px;
+
+}
+
+#scroll-link {
+  background-color: white;
+  height: 30px;
+  width:fit-content;
+  padding: 5px 15px 5px 10px;
+  margin-right: 8px;
+  box-sizing: border-box;
+  border: solid 1px #2e69ff;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 4px;
+}
+
+#scroll-link *{
+  color: #2e69ff;
+}
+
+#discover-topics {
+  width: 709px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#discover-title{
+  font-size: 21px;
+  color: #282829;
+  font-weight: bold;
+}
+#suggested-topics{
+  font-size: 15px;
+  font-weight: 500;
+  color: #282829;
+}
+
+
+#discover-topics-container{
+  width: 709px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.topic-tile{
+  height: 234px;
+  width: 170px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border-style: solid;
+    border-width: 1px;
+    border-color: #dee0e1;
+    background-color: white;
+}
+
+.topic-preview{
+  background-image: url("../images/topic.jpg");
+  width: 170px;
+  height: 50px;
+  overflow: hidden;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.topic-tile-logo{
+  background-image: url("../images/topic.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  border: solid 2px white;
+  position: relative;
+  top: -20px;
+  left: 65px
+}
+
+
+.topic-title {
+  top: -11px;
+  position: relative;
+  font-weight: bold;
+  font-size: 13px;
+  color: #282829;
+  text-align: center;
+}
+
+.follow-button.unfollowed{
+  position: relative;
+  bottom: -84px;
+  height: fit-content;
+  padding: 5px 15px 5px 10px;
+  background-color: #ebf0ff;
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 16px;
+  border: solid 0px rgb(195, 195, 195);
+  box-shadow: rgba(46, 105, 255, 0.09) 0px 0px 0px 1px inset;
+}
+
+.unfollowed .button-text{
+  padding: 0px 5px 0px 5px;
+  color: #2e69ff;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  font-weight: 500;
+}
+
+.unfollowed .follow-count{
+  color: #2e69ff;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+
+.follow-button{
+  position: relative;
+  bottom: -84px;
+  height: fit-content;
+  padding: 5px 15px 5px 10px;
+  background-color: rgb(235, 236, 237);
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 16px;
+  border: solid 0px rgb(195, 195, 195);
+  box-shadow: rgba(46, 105, 255, 0.09) 0px 0px 0px 1px inset;
+}
+
+.button-text{
+  padding: 0px 5px 0px 5px;
+  color: #636466;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  font-weight: 500;
+}
+
+.follow-count{
+  color: #636466;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }

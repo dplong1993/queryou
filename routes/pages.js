@@ -63,10 +63,10 @@ router.get('/queries', csrfProtection, routeHandler(async(req, res) => {
 }));
 
 //Topics page router
-router.get('/topics', (req, res) => {
+router.get('/topics',  csrfProtection, routeHandler(async (req, res) => {
   if(!req.user) res.redirect('/login_signup');
-  res.render("topics.pug");
-});
+  res.render("topics.pug", {csrf: req.csrfToken() });
+}));
 
 //Notifications page router
 router.get('/notifications', (req, res) => {

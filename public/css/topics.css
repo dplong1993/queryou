@@ -136,14 +136,14 @@ html {
 
 #discover-topics-container{
   width: 709px;
-  height: 100%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
 }
 
 .topic-tile{
   height: 234px;
-  width: 170px;
+  width: 167px;
   margin-right: 8px;
   margin-bottom: 8px;
   border-radius: 10px;
@@ -155,7 +155,7 @@ html {
 
 .topic-preview{
   background-image: url("../images/topic.jpg");
-  width: 170px;
+  width: 167px;
   height: 50px;
   overflow: hidden;
   border-top-right-radius: 10px;
@@ -242,7 +242,7 @@ html {
 }
 
 #create-topic-div{
-  position: absolute;
+  position: fixed;
   top: 0px;
   bottom: 0px;
   left: 0px;
@@ -251,12 +251,16 @@ html {
   z-index: 3;
 }
 
+.hidden{
+  display: none;
+}
+
 #create-topic-form-div{
   position: relative;
   box-sizing: border-box;
   width: 608px;
   height: 486px;
-  top: 220px;
+  top: -400px;
   background-color: white;
   z-index: 4;
   border-radius: 8px;
@@ -323,4 +327,14 @@ html {
 
 #create-topic-button:hover{
   cursor: pointer;
+}
+
+
+#model-magic{
+  position: relative;
+}
+
+
+button:focus{
+  outline: none;
 }

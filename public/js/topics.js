@@ -4,10 +4,12 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     });
     const data = await res.json();
     // console.log(data);
+
     const id = data.id;
+    console.log(id);
     const userTopicData = data.userTopics;
-    const TopicData = data.Topics;
-    // console.log(TopicData);
+    const TopicData = data.topics;
+    console.log(TopicData);
     for (let userTopic of userTopicData) {
         const topicElement = document.createElement("div");
         topicElement.classList.add("topic-container");
@@ -108,10 +110,10 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             if (event.target.childNodes[2].classList.contains("unfollowed")) {
                 const form = event.target;
                 const formData = new FormData(form);
-                const userId = formData.get('userId');
-                console.log(userId);
+                const userId = id;
                 const topicId = formData.get('topicId');
-                console.log(topicId);
+                // console.log(userId);
+                // console.log(topicId);
                 const _csrfElement = document.getElementById("_csrf")
                 const _csrf = _csrfElement.getAttribute("content")
                 const fetchBody = { userId, topicId, _csrf };
@@ -129,10 +131,10 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             } else {
                 const form = event.target;
                 const formData = new FormData(form);
-                const userId = formData.get('userId');
-                console.log(userId);
+                const userId = id;
+                // console.log(userId);
                 const topicId = formData.get('topicId');
-                console.log(topicId);
+                // console.log(topicId);
                 const _csrfElement = document.getElementById("_csrf")
                 const _csrf = _csrfElement.getAttribute("content")
                 const fetchBody = { userId, topicId, _csrf };
@@ -148,11 +150,24 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                 event.target.childNodes[2].classList.toggle("followed")
                 event.target.childNodes[2].childNodes[0].innerHTML = "Following"
             }
+            location.reload();
         })
     }
-
-
     const newTopicForm = document.getElementById("create-topic-div");
+
+    const createTopicButton = document.getElementById("create-topic");
+    createTopicButton.addEventListener("click", (event)=>{
+        const createDiv = document.getElementById("create-topic-div");
+        createDiv.classList.remove("hidden");
+        const createTopicFormDiv = document.getElementById("create-topic-form-div");
+        createTopicFormDiv.classList.remove("hidden");
+    });
+
+    // const newTopicFormDiv = document.getElementById("create-topic-form-div");
+    // newTopicForm.addEventListener("click", event=>{
+    //     event.stopPropagation();
+    // });
+
     newTopicForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -173,5 +188,13 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                 "Content-Type": "application/json",
             }
         });
+    });
+
+    newTopicForm.addEventListener("click", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        newTopicForm.classList.add("hidden");
+        const createTopicFormDiv = document.getElementById("create-topic-form-div");
+        createTopicFormDiv.classList.add("hidden");
     });
 });

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { routeHandler } = require("../utils");
-
+const {Op} = require("sequelize");
 const { expiresIn } = require('../../config').jwtConfig;
 const db = require('../../db/models');
 const { Topic, UserTopic } = db;
@@ -17,9 +17,26 @@ router.get('/', routeHandler(async (req, res, next) => {
             where: { userId: Number(user.id) },
             include: { model: Topic }
         });
-    const Topics = await Topic.findAll({ include: { model: UserTopic } });
+    let followedIds=[];
+    for (let userTopic of userTopics){
+        followedIds.push(userTopic.topicId);
+    }
+    console.log(followedIds);
+    const topics = await Topic.findAll(
+        {
+            where:
+                {
+                    id:{[Op.notIn]:followedIds}
+                },
+            include:
+                {
+                    model: UserTopic
+                }
+        }
+    );
 
-    res.json({ id: user.id, userTopics: userTopics, Topics: Topics });
+        console.log(topics);
+    res.json({id: user.id, userTopics: userTopics, topics });
 }));
 
 
@@ -52,7 +69,6 @@ router.post('/unfollow',
     csrfProtection,
     routeHandler(async (req, res, next) => {
         const { ownerId, name, description } = req.body;
-
         const previousEntry = await Topic.findOne({ where: { name: name} });
         if (!previousEntry) {
             Topic.create({ownerId, name, description});
@@ -62,19 +78,19 @@ router.post('/unfollow',
         res.json();
     }));
 
-    router.get('/:id(\\d)',
-    csrfProtection,
-    routeHandler(async (req, res, next) => {
-        const { ownerId, name, description } = req.body;
+    // router.get('/',
+    // csrfProtection,
+    // routeHandler(async (req, res, next) => {
+    //     const id = req.params.id
 
-        const previousEntry = await Topic.findOne({ where: { name: name} });
-        if (!previousEntry) {
-            Topic.create({ownerId, name, description});
-            const newEntry = await Topic.findOne({ where: { name: name} });
-        res.redirect(`/${newEntry.id}`);
-        }
-        res.json();
-    }));
+    //     const previousEntry = await Topic.findOne({ where: { name: name} });
+    //     if (!previousEntry) {
+    //         Topic.create({ownerId, name, description});
+    //         const newEntry = await Topic.findOne({ where: { name: name} });
+    //     res.redirect(`/${newEntry.id}`);
+    //     }
+    //     res.json();
+    // }));
 
 
 module.exports = router;

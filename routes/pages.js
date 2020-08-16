@@ -68,7 +68,7 @@ router.get('/topics',
   routeHandler(async (req, res) => {
   if(!req.user) res.redirect('/login_signup');
   res.render("topics.pug",
-   {csrf: req.csrfToken() }
+   {csrf: req.csrfToken(), user: req.user }
    );
 }));
 

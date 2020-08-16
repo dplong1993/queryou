@@ -14,9 +14,11 @@ append head
 
 block content
   +navBar()
-  main
-    .feed 
-      +answersList()
-      +topicsList()
+  main.q-box
+    div.q-box
+      div.q-text.qu-display--flex.qu-px--large.qu-pb--large.qu-flexDirection--row.qu-fontSize--regular 
+        div.q-box
+          +answersList()
+          +topicsList()
   div.log-out-btn-container
     div.log-out Log-out

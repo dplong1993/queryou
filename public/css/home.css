@@ -12,7 +12,7 @@ h1 {
   color: #636466;
 }
 
-.log-out{
+.log-out {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,15 +27,153 @@ h1 {
   cursor: pointer;
 }
 
-.log-out-btn-container{
+.log-out-btn-container {
   display: flex;
   justify-items: center;
   align-items: center;
 }
 
-.topics-list{
+.q-box {
+  box-sizing: border-box;
+  direction: ltr;
+}
+
+.q-box-inner {
+  box-sizing: initial;
+  direction: ltr;
+  width: 1002px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  align-items: stretch;
+}
+
+.topics-list {
   display: flex;
   justify-items: left;
   align-items: center;
 }
 
+.qu-overflow--hidden {
+  overflow: hidden;
+}
+
+.qu-mx--n_small {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.header-feed {
+  color: #b92b27;
+  font-weight: 500;
+  font-size: 13px;
+  text-size-adjust: 100%;
+  text-align: left;
+  line-height: 1.4;
+  box-sizing: border-box;
+  direction: ltr;
+  position: relative;
+  height: auto;
+  background-color: rgba(185, 43, 39, 0.1);
+}
+
+.div {
+  display: block;
+}
+
+.q-box {
+  box-sizing: border-box;
+  direction: ltr;
+  width: 1002px;
+  padding-right: 16px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.q-box-answer {
+  box-sizing: border-box;
+  direction: ltr;
+  width: 1002px;
+  padding-right: 16px;
+  padding-left: 16px;
+  position: relative;
+}
+
+.qu-flex--none {
+  flex: none;
+}
+
+.qu-mb--tiny {
+  margin-bottom: 4px;
+}
+
+.qu-flex--none {
+  flex: none;
+}
+
+.topics-list {
+  display: block;
+  box-sizing: border-box;
+  direction: ltr;
+  flex-grow: 1;
+  font-size: 13px;
+  color: #636466;
+}
+
+.feed-box {
+  box-sizing: border-box;
+  direction: ltr;
+  width: 142px;
+}
+
+element.style {
+  box-sizing: initial;
+  direction: ltr;
+  width: 1002px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  align-items: stretch;
+}
+
+.qu-fontSize--regular {
+  font-size: 15px;
+}
+
+.qu-flexDirection--row {
+  flex-direction: row;
+}
+
+.qu-display--flex {
+  display: flex;
+}
+
+.qu-pb--large {
+  padding-bottom: 24px;
+}
+
+.qu-px--large {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.qu-fontSize--regular {
+  font-size: 15px;
+}
+
+.qu-flexDirection--row {
+  flex-direction: row;
+}
+
+.qu-display--flex {
+  display: flex;
+}
+
+.qu-pb--large {
+  padding-bottom: 24px;
+}
+
+.qu-px--large {
+  padding-left: 24px;
+  padding-right: 24px;
+}

@@ -5,8 +5,8 @@ const userRouter = require('./users');
 const answerRouter = require('./answers');
 const topicRouter = require('./topics')
 //const testRouter = require('./test');
-const homeRouter = require('./home')
-const testRouter = require('./test');
+//const homeRouter = require('./home')
+//const testRouter = require('./test');
 const queriesRouter = require('./queries');
 const interestsRouter = require('./interests');
 const questionTopicsRouter = require('./questionTopics');
@@ -37,8 +37,8 @@ router.use('/users', userRouter);
 router.use('/answers', answerRouter);
 router.use('/topics', topicRouter)
 //router.use('/test', testRouter);
-router.use('/home', homeRouter);
-router.use('/test', testRouter);
+//router.use('/home', homeRouter);
+//router.use('/test', testRouter);
 router.use('/queries', queriesRouter);
 router.use('/interests', interestsRouter);
 router.use('/questionTopics', questionTopicsRouter);

@@ -81,7 +81,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     answerCount.addEventListener('click', (e) => {
       const currentQuestion = getCurrentQuestion(questions, Number(questionIds[index].innerText));
       const content = currentQuestion.content.split(' ').join('-');
-      window.location.href = `queries/${content}`;
+      window.location.href = `${content}/`;
     });
   })
 
@@ -92,7 +92,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       const content = formData.get("answer");
       const _csrf = formData.get("_csrf");
       const questionId = Number(questionIds[index].innerText);
-      console.log(questionId);
+      // console.log(questionId);
       const body = { content, questionId, _csrf};
 
       const res = await fetch('/api/queries', {

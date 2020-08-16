@@ -5,7 +5,7 @@ const db = require("../db/models");
 const { getUserFromToken } = require('./utils/auth');
 const { Op } = require('sequelize');
 const { routeHandler } = require('./utils');
-const {Question, Topic, Answer, QuestionTopic} = db;
+const {User, Question, Topic, Answer, QuestionTopic} = db;
 
 const csrfProtection = require('csurf')({cookie: true});
 
@@ -83,6 +83,38 @@ router.get('/profile', (req, res) => {
   if(!req.user) res.redirect('/login_signup');
   res.render("profile.pug");
 });
+
+router.get('/:id',
+  csrfProtection,
+  routeHandler(async(req, res) => {
+  if(!req.user) res.redirect('/login_signup');
+
+  const contentWithDash = req.params.id;
+  console.log(contentWithDash);
+  const content = contentWithDash.split('-').join(' ').concat('?');
+
+  const question = await Question.findOne(
+    {
+      where: {content: content},
+      include: [
+        {
+          model: QuestionTopic,
+          include:
+          {
+            model: Topic
+          }
+        },
+        {
+          model: Answer,
+          include:
+          {
+            model: User
+          }
+        }
+      ]});
+  // console.log(question, question.QuestionTopics[0].Topic.name);
+  res.render("questionContent.pug", { question, csrf: req.csrfToken() });
+}));
 
 //Home page router
 router.get('/', (req, res) => {

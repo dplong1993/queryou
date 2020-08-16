@@ -59,25 +59,25 @@ router.get('/queries', csrfProtection, routeHandler(async(req, res) => {
   const questions = await getQuestions(req.user);
 
   createTimestamps(questions);
-  res.render("queries.pug", { questions, csrf: req.csrfToken() });
+  res.render("queries.pug", { user: req.user, questions, csrf: req.csrfToken() });
 }));
 
 //Topics page router
-router.get('/topics', (req, res) => {
+router.get('/topics', csrfProtection, (req, res) => {
   if(!req.user) res.redirect('/login_signup');
-  res.render("topics.pug");
+  res.render("topics.pug", { user: req.user, csrf: req.csrfToken() });
 });
 
 //Notifications page router
-router.get('/notifications', (req, res) => {
+router.get('/notifications', csrfProtection, (req, res) => {
   if(!req.user) res.redirect('/login_signup');
-  res.render("notifications.pug");
+  res.render("notifications.pug", { user: req.user, csrf: req.csrfToken() });
 });
 
 //Profile page router
-router.get('/profile', (req, res) => {
+router.get('/profile', csrfProtection, (req, res) => {
   if(!req.user) res.redirect('/login_signup');
-  res.render("profile.pug");
+  res.render("profile.pug", { user: req.user, csrf: req.csrfToken() });
 });
 
 router.get('/:id',
@@ -109,13 +109,13 @@ router.get('/:id',
         }
       ]});
   // console.log(question, question.QuestionTopics[0].Topic.name);
-  res.render("questionContent.pug", { question, csrf: req.csrfToken() });
+  res.render("questionContent.pug", { user: req.user, question, csrf: req.csrfToken() });
 }));
 
 //Home page router
-router.get('/', (req, res) => {
+router.get('/', csrfProtection, (req, res) => {
   if(!req.user) res.redirect('/login_signup');
-  res.render('home');
+  res.render('home', { user: req.user, csrf: req.csrfToken() });
 });
 
 //Catch all for routes we have not defined

@@ -5,6 +5,8 @@ const userRouter = require('./users');
 const queriesRouter = require('./queries');
 const interestsRouter = require('./interests');
 const questionTopicsRouter = require('./questionTopics');
+const questionsRouter = require("./question");
+
 const { environment } = require('../../config');
 const { ValidationError } = require('sequelize');
 const { getUserFromToken } = require('../utils/auth');
@@ -31,6 +33,7 @@ router.use('/users', userRouter);
 router.use('/queries', queriesRouter);
 router.use('/interests', interestsRouter);
 router.use('/questionTopics', questionTopicsRouter);
+router.use('/questions', questionsRouter);
 
 router.use((err, req, res, next) => {
   if(err instanceof ValidationError){

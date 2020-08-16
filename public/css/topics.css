@@ -32,3 +32,30 @@ h1 {
   justify-items: center;
   align-items: center;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+#page-div{
+  padding: 30px 24px 24px 24px;
+  width: 1002;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#your-topics-container {
+  width: 709px;
+  height: 100%;
+  border: solid 1px #dee0e1!important;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#your-topics-title{
+  font-size: 18px;
+  font-weight: bold;
+  color: #282829;
+  padding: 8px 16px 0px 16px;
+}

@@ -189,6 +189,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                 "Content-Type": "application/json",
             }
         });
+        window.location.href="/topics";
     });
 
     newTopicForm.addEventListener("click", (e) => {

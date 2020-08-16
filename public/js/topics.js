@@ -167,11 +167,12 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     // newTopicForm.addEventListener("click", event=>{
     //     event.stopPropagation();
     // });
-
-    newTopicForm.addEventListener("submit", async (e) => {
+    const formButton = document.getElementById("create-topic-button");
+    formButton.addEventListener("click", async (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const form = e.target;
+        // const form = e.target;
+        const form = document.querySelector("#create-topic-form")
         const formData = new FormData(form);
         const ownerId = id;
         console.log(ownerId);

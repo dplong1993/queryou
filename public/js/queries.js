@@ -24,6 +24,7 @@ const getCurrentQuestionTopic = (questionTopics, questionId) => {
   for(let questionTopic of questionTopics){
     if(questionTopic.questionId === questionId) return questionTopic;
   }
+  return null;
 }
 
 const getQuestionTopics = async() => {
@@ -35,7 +36,8 @@ const getQuestionTopics = async() => {
 const setTopicNames = (questionTopics) => {
   questionHeaders.forEach((el, index)=> {
     const currentQuestionTopic = getCurrentQuestionTopic(questionTopics, Number(questionIds[index].innerText));
-    el.innerText = "Question add · " + currentQuestionTopic.Topic.name;
+    if(currentQuestionTopic) el.innerText = "Question add · " + currentQuestionTopic.Topic.name;
+    else el.innerText = "Question add · No topic yet"
   });
 }
 

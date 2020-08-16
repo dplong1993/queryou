@@ -1,13 +1,21 @@
 mixin navBar()
-  .question-form THIS IS THE QUESTION FORM
+  .question-form
     .question-form-header
+      .info Add Question
+      .exit
+        .question-form-exit-image
+         <svg width="20px" height="20px" viewBox="0 0 24 24"><g id="close" class="icon_svg-stroke" stroke="#666" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M5.5,5.5 L18.5,18.5"></path><path d="M5.5,18.5 L18.5,5.5"></path></g></svg>
     .question-form-main
       .form
         .question-form-user-info
-        .question-form-content
-        .question-form-footer
-          .question-form-cancel-button
-          .question-form-submit-button
+          .question-form-user-image
+          .question-form-user-name User Name
+        form(id="question-form")
+          .question-form-content
+            textarea(name="content" placeholder="Start your question with \"What\", \"How\", \"Why\", etc.")
+          .question-form-footer
+            .question-form-cancel-button Cancel
+            .question-form-submit-button Add Question
   div.header-div
     div.outer-container
       div.inner-container

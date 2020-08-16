@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     }
 
     document.addEventListener("submit", async (event) => {
-
+        event.preventDefault();
         let requests = [];
         const topicTiles = document.querySelectorAll(".topic-tile .checked");
         // console.log(topicTiles);
@@ -63,7 +63,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
                 "Content-Type": "application/json",
             }
         });
-        window.location.href = '/';
+        window.location.href="/";
     })
 });
 

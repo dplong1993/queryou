@@ -81,7 +81,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     answerCount.addEventListener('click', (e) => {
       const currentQuestion = getCurrentQuestion(questions, Number(questionIds[index].innerText));
       const content = currentQuestion.content.split(' ').join('-');
-      window.location.href = `queries/${content}`;
+      window.location.href = `${content}/`;
     });
   })
 

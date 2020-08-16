@@ -19,7 +19,7 @@ router.get('/', routeHandler(async (req, res, next) => {
         });
     const Topics = await Topic.findAll({ include: { model: UserTopic } });
 
-    res.json({ id: user.id, userTopics: userTopics, Topics: Topics});
+    res.json({ id: user.id, userTopics: userTopics, Topics: Topics });
 }));
 
 
@@ -27,13 +27,23 @@ router.get('/', routeHandler(async (req, res, next) => {
 router.post('/follow',
     csrfProtection,
     routeHandler(async (req, res, next) => {
+        const { userId, topicId } = req.body;
 
+        const previousEntry = await UserTopic.findOne({ where: { userId: userId, topicId: topicId } });;
+        if (!previousEntry) {
+            UserTopic.create({ userId: userId, topicId: topicId });
+        }
     }));
 //unfollow route
 router.post('/unfollow',
     csrfProtection,
     routeHandler(async (req, res, next) => {
+        const { userId, topicId } = req.body;
 
+        const previousEntry = await UserTopic.findOne({ where: { userId: userId, topicId: topicId } });;
+        if (previousEntry) {
+            UserTopic.destroy({where: { userId: userId, topicId: topicId }});
+        }
     }));
 
 

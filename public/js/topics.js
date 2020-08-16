@@ -61,36 +61,37 @@ window.addEventListener("DOMContentLoaded", async (event) => {
         const followForm = document.createElement("form");
         followForm.classList.add("follow-form");
 
-            const userIdInput = document.createElement("input")
-            userIdInput.setAttribute("type", "hidden");
-            userIdInput.classList.add("hidden-input");
-            userIdInput.setAttribute("value", id);
-            userIdInput.setAttribute("name", "userId");
-            followForm.appendChild(userIdInput);
+        const userIdInput = document.createElement("input")
+        userIdInput.setAttribute("type", "hidden");
+        userIdInput.classList.add("hidden-input");
+        userIdInput.setAttribute("value", id);
+        userIdInput.setAttribute("name", "userId");
+        followForm.appendChild(userIdInput);
 
-            const topicIdInput = document.createElement("input");
-            topicIdInput.setAttribute("type", "hidden");
-            topicIdInput.classList.add("hidden-input");
-            topicIdInput.setAttribute("value", topic.id);
-            topicIdInput.setAttribute("name", "topicId");
-            followForm.appendChild(topicIdInput);
+        const topicIdInput = document.createElement("input");
+        topicIdInput.setAttribute("type", "hidden");
+        topicIdInput.classList.add("hidden-input");
+        topicIdInput.setAttribute("value", topic.id);
+        topicIdInput.setAttribute("name", "topicId");
+        followForm.appendChild(topicIdInput);
 
-            const followButton = document.createElement("button");
-            followButton.setAttribute("type", "submit");
-            followButton.classList.add("follow-button");
-            followButton.classList.add("unfollowed");
+        const followButton = document.createElement("button");
+        followButton.setAttribute("type", "submit");
+        followButton.classList.add("follow-button");
+        if()
+        followButton.classList.add("unfollowed");
 
-                // const followSVG = document.createElement("svg");
+        // const followSVG = document.createElement("svg");
 
-                const followButtonText = document.createElement("div");
-                followButtonText.innerHTML = "Follow";
-                followButtonText.classList.add("button-text");
-                followButton.appendChild(followButtonText);
+        const followButtonText = document.createElement("div");
+        followButtonText.innerHTML = "Follow";
+        followButtonText.classList.add("button-text");
+        followButton.appendChild(followButtonText);
 
-                const followButtonCount = document.createElement("div");
-                followButtonCount.innerHTML = topic.UserTopics.length;
-                followButtonCount.classList.add("follow-count");
-                followButton.appendChild(followButtonCount);
+        const followButtonCount = document.createElement("div");
+        followButtonCount.innerHTML = topic.UserTopics.length;
+        followButtonCount.classList.add("follow-count");
+        followButton.appendChild(followButtonCount);
 
 
         followForm.appendChild(followButton);
@@ -101,36 +102,46 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
     //const followButtons = document.querySelectorAll(".follow-button");
     //for(let followButton in followButtons){
-        document.addEventListener("submit", async (event)=>{
-            event.preventDefault();
+    document.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
 
+        if (event.target.classList.contains("unfollowed")) {
             const form = event.target;
             const formData = new FormData(form);
             const userId = formData.get('userId');
             const topicId = formData.get('topicId');
-            const _csrf = document.querySelector("meta");
-            console.log(event.target)
-            const fetchBody = { userId, topicId, _csrf: _csrf.value };
-            if (event.target.classList.includes("unfollowed")){
-                const res = await fetch('/api/topics/follow', {
-                    method: "POST",
-                    body: JSON.stringify(fetchBody),
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                });
-                event.target.classList.toggle("unfollowed")
-            } else {
-                const res = await fetch('/api/topics/unfollow', {
-                    method: "POST",
-                    body: JSON.stringify(fetchBody),
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                });
-                event.target.classList.toggle("unfollowed")
-            }
+            const _csrf = document.getElementById("_csrf")
+            console.log(_csrf.getAttribute("content"));
+            const fetchBody = { userId, topicId, _csrf: _csrf.getAttribute("content") };
+            console.log(fetchBody);
+            const res = await fetch('/api/topics/follow', {
+                method: "POST",
+                body: JSON.stringify(fetchBody),
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            event.target.classList.toggle("unfollowed")
+        } else {
+            const form = event.target;
+            const formData = new FormData(form);
+            const userId = formData.get('userId');
+            const topicId = formData.get('topicId');
+            const _csrf = document.getElementById("_csrf")
+            console.log(_csrf.getAttribute("content"));
+            const fetchBody = { userId, topicId, _csrf: _csrf.getAttribute("content") };
+            const res = await fetch('/api/topics/unfollow', {
 
-        })
+                method: "POST",
+                body: JSON.stringify(fetchBody),
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            event.target.classList.toggle("unfollowed")
+        }
+
+    })
     //}
 });

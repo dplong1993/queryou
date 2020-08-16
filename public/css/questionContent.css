@@ -1,3 +1,9 @@
+.answer{
+  box-sizing: border-box;
+  border-bottom: solid 1px #dee0e1;
+  padding-bottom: 8px;
+}
+
 .answer-button{
   display: flex;
   flex-flow: row;
@@ -18,6 +24,14 @@
   height: 134px;
   padding: 16px;
   border: solid 1px #dee0e1;
+}
+
+.answer-count {
+  font-weight: 500;
+  font-size: 15px;
+  color: #282829;
+  border-bottom: solid 1px #dee0e1;
+  padding: 8px 0;
 }
 
 .answer-form-footer{
@@ -46,6 +60,14 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   color: #949494;
   font-weight: 400;
+}
+
+.answer-user {
+  display: flex;
+}
+
+.answer-user-name{
+  margin-bottom: 2px;
 }
 
 .footer{
@@ -97,6 +119,13 @@ main {
   background-color: #FFFFFF;
 }
 
+.question{
+  font-size: 15px;
+  font-weight: bold;
+  color: #282829;
+  margin-bottom: 15px;
+}
+
 .question-content{
   font-weight: bold;
   font-size: 21px;
@@ -104,14 +133,18 @@ main {
   width: fit-content;
 }
 
-
 .question-header{
   box-sizing: border-box;
   display: flex;
   flex-flow: column;
   width: 100%;
   border-bottom: solid 1px #dee0e1;
-  padding: 8px 16px;
+}
+
+.time{
+  font-size: 13px;
+  color: #939598;
+  font-weight: 400;
 }
 
 .topic-info{
@@ -163,7 +196,7 @@ main {
   font-weight: normal;
 }
 
-.user_image{
+.user_image-holder{
   margin-right: 8px;
 }
 
@@ -185,4 +218,10 @@ main {
 
 .user_text{
   align-self: start;
+}
+
+.answer-user-img #user{
+  width: 34px;
+  height: 34px;
+  margin-right: 8px;
 }

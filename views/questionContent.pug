@@ -26,7 +26,7 @@ block content
         .form
           .answer-form.hidden
             .user_info
-              .user_image
+              .user_image-holder
                 <img id="user" src="../public/images/new-user.png">
               .user_text
                 .user_name User Name
@@ -39,12 +39,15 @@ block content
                 .answer-form-footer
                   button(type="submit" class="submit") Submit
       .answer-list
+        .answer-count #{question.Answers.length} Answers
         each answer in question.Answers
           .answer
             .answer-user
               .answer-user-img
-              .answer-user-name  #{answer.User.firstName} #{answer.User.lastName}
-              .time timestamp
+                <img id="user" src="../public/images/new-user.png">
+              .answer-user-text
+                .answer-user-name  #{answer.User.firstName} #{answer.User.lastName}
+                .time timestamp
             .answer-text
               .question #{question.content}
               .answer-content #{answer.content}

@@ -114,6 +114,7 @@ router.get('/:id',
       ]});
   // console.log(question, question.QuestionTopics[0].Topic.name);
   res.render("questionContent.pug", { user: req.user, question, csrf: req.csrfToken() });
+
 }));
 
 //Home page router

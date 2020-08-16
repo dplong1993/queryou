@@ -108,4 +108,9 @@ router.get('/token', routeHandler(async (req, res, next) => {
   next(err);
 }));
 
+//Get the current user info
+router.get('/', (req, res) => {
+  res.json({user: req.user});
+});
+
 module.exports = router;

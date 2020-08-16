@@ -11,10 +11,10 @@ const {check} = require('express-validator');
 const { sequelize } = require('../../db/models');
 
 
-//Get the current user id
-router.get('/user', routeHandler(async (req, res, next) => {
-  res.json({id: req.user.id});
-}));
+// //Get the current user id
+// router.get('/user', routeHandler(async (req, res, next) => {
+//   res.json({id: req.user.id});
+// }));
 
 const validateAnswer = [
   check("content")

@@ -148,6 +148,20 @@
   margin-right: auto;
 }
 
+.question-form{
+  position: absolute;
+  display: flex;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+  background-color: #fff;
+  min-height: 400px;
+  width: 620px;
+  border-radius: 8px;
+  border: solid 1px #dee0e1;
+  flex-direction: column;
+}
+
 .search{
   box-sizing: border-box;
   width: 100%;

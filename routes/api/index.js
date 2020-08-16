@@ -4,6 +4,7 @@ const router = express.Router();
 const userRouter = require('./users');
 const queriesRouter = require('./queries');
 const interestsRouter = require('./interests');
+const topicsRouter = require('./topics');
 const questionTopicsRouter = require('./questionTopics');
 const questionsRouter = require("./question");
 
@@ -32,6 +33,7 @@ router.use(async (req, res, next) => {
 router.use('/users', userRouter);
 router.use('/queries', queriesRouter);
 router.use('/interests', interestsRouter);
+router.use('/topics', topicsRouter);
 router.use('/questionTopics', questionTopicsRouter);
 router.use('/questions', questionsRouter);
 

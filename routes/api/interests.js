@@ -23,16 +23,13 @@ router.post('/',
   csrfProtection,
   routeHandler(async (req, res, next) => {
     const bodyArray = req.body;
-    // console.log(bodyArray);
-    count = 0;
     for (let topic of bodyArray.requests) {
-      count++;
-      console.log(count);
       const previousEntry = await UserTopic.findOne({ where: { userId: topic.userId, topicId: topic.topicId } });;
       if (!previousEntry) {
         UserTopic.create({ userId: topic.userId, topicId: topic.topicId });
       }
     }
+    res.redirect("../");
   }));
 
 

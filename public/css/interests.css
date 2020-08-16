@@ -181,6 +181,10 @@ button{
     height: 38px;
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 .disabled{
     opacity: 50%;
 }

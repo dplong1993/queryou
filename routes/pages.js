@@ -63,10 +63,14 @@ router.get('/queries', csrfProtection, routeHandler(async(req, res) => {
 }));
 
 //Topics page router
-router.get('/topics', csrfProtection, (req, res) => {
+router.get('/topics',
+  csrfProtection,
+  routeHandler(async (req, res) => {
   if(!req.user) res.redirect('/login_signup');
-  res.render("topics.pug", { user: req.user, csrf: req.csrfToken() });
-});
+  res.render("topics.pug",
+   {csrf: req.csrfToken(), user: req.user }
+   );
+}));
 
 //Notifications page router
 router.get('/notifications', csrfProtection, (req, res) => {

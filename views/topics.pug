@@ -13,11 +13,30 @@ block content
   +navBar()
   #page-div
     #your-topics-container
-      #your-topics-title Your Spaces
-      button#scroll-link(href="#discover-topics-container")
+      #your-topics-title Your Topics
+      button#create-topic
+        <svg width="20px" height="20px" viewBox="0 0 24 24"><g class="icon_svg-stroke" stroke="#2e69ff" stroke-width="1.5" fill="none" fill-rule="evenodd"><path d="M12,7 L12,17" stroke-linecap="round"></path><path d="M7,12 L17,12" stroke-linecap="round"></path><circle cx="12" cy="12" r="9"></circle></g></svg>
+        #button-contents Create a Topic
+      //- button#scroll-link(href="#discover-topics-container")
+      //-   <svg width="24px" height="24px" viewBox="0 0 24 24"><g id="compass" fill-rule="evenodd" fill="none"><path id="circle" class="icon_svg-stroke" stroke-width="1.5" d="m12,21c-4.95,0 -9,-4.05 -9,-9c0,-4.95 4.05,-9 9,-9c4.95,0 9,4.05 9,9c0,4.95 -4.05,9 -9,9z"></path><path id="needle" class="icon_svg-fill_as_stroke" stroke="none" d="m15.23284,8.03626c0.44979,-0.16867 0.89957,0.28111 0.7309,0.7309l-1.6867,4.49786c-0.16867,0.50601 -0.56223,0.84335 -1.01202,1.01202l-4.49786,1.6867c-0.44979,0.16867 -0.89957,-0.28111 -0.7309,-0.7309l1.6867,-4.49786c0.16867,-0.50601 0.56223,-0.84335 1.01202,-1.01202l4.49786,-1.6867zm-3.23284,4.96374c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1z"></path></g></svg>
+      //-   #button-contents Discover Topics
     #discover-topics
-      h1#discover-title
-      h2#suggested-topics
+      #discover-title Discover Topics
+      #suggested-topics Topics you might like
       #discover-topics-container
     div.log-out-btn-container
       div.log-out Log-out
+  #modal-magic
+    #create-topic-div.hidden
+    #create-topic-form-div.hidden
+      #exit-button
+      #form-instructions Create a Topic
+      #form-instructions-continued Create a Topic to share your interests, curate content, host discussions, and more.
+      form#create-topic-form
+        #name-label(class="label") Name
+        input(type="text" name="name" class="create-input" placeholder="Enter a name for your Topic")
+        #description-label(class="label") About
+        input(type="text" name="description" class="create-input" placeholder="1-line description of your Space")
+        #create-topic-footer
+          button(type="submit")#create-topic-button Done
+  meta("name"="_csrf" content=csrf)#_csrf

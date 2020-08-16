@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Question.belongsTo(models.User, {foreignKey: 'ownerId'});
       Question.hasMany(models.QuestionTopic, {foreignKey: 'questionId'});
       Question.hasMany(models.QuestionComment, {foreignKey: 'questionId'});
+      Question.hasMany(models.Answer, {foreignKey: 'questionId'});
       Question.belongsToMany(models.Topic, {
         through: models.QuestionTopic,
         foreignKey: 'questionId',

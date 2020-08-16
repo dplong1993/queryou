@@ -32,3 +32,10 @@ h1 {
   justify-items: center;
   align-items: center;
 }
+
+.topics-list{
+  display: flex;
+  justify-items: left;
+  align-items: center;
+}
+

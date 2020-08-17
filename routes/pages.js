@@ -11,7 +11,7 @@ const csrfProtection = require('csurf')({cookie: true});
 
 //Login/signup page router
 router.get('/login_signup', csrfProtection, (req, res) => {
-  if(req.user) res.redirect('/');
+  if(req.user) res.redirect('/home');
   res.render('login_signup', { csrf: req.csrfToken()});
 });
 
@@ -84,6 +84,12 @@ router.get('/profile', csrfProtection, (req, res) => {
   res.render("profile.pug", { user: req.user, csrf: req.csrfToken() });
 });
 
+//Home page router
+router.get('/home', csrfProtection, (req, res) => {
+  if(!req.user) res.redirect('/login_signup');
+  res.render('home', { user: req.user, csrf: req.csrfToken() });
+});
+
 router.get('/:id',
   csrfProtection,
   routeHandler(async(req, res) => {
@@ -117,11 +123,7 @@ router.get('/:id',
 
 }));
 
-//Home page router
-router.get('/', csrfProtection, (req, res) => {
-  if(!req.user) res.redirect('/login_signup');
-  res.render('home', { user: req.user, csrf: req.csrfToken() });
-});
+
 
 //Catch all for routes we have not defined
 router.get('*', (req, res) => {

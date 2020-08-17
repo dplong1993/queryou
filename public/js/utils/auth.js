@@ -32,5 +32,5 @@ export const redirectIfLoggedIn = async () => {
 
   //If the res from the fetch is ok, the user is signed in
   //so we redirect the page.
-  if (res.ok) window.location.href = '/';
+  if (res.ok) window.location.href = '/home';
 };

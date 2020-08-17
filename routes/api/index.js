@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
 const userRouter = require('./users');
 const queriesRouter = require('./queries');
 const interestsRouter = require('./interests');
 const topicsRouter = require('./topics');
 const questionTopicsRouter = require('./questionTopics');
 const questionsRouter = require("./question");
+const homeRouter = require("./home");
 
 const { environment } = require('../../config');
 const { ValidationError } = require('sequelize');
@@ -30,6 +30,7 @@ router.use(async (req, res, next) => {
   next();
 });
 
+router.use('/home', homeRouter);
 router.use('/users', userRouter);
 router.use('/queries', queriesRouter);
 router.use('/interests', interestsRouter);

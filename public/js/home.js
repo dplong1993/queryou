@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     method: "GET",
   });
   const data = await res.json();
-  console.log(data);
+  console.log(`DATA IS`, data);
 
   const id = data.id;
   console.log(id);

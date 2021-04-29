@@ -45,10 +45,17 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     profileLogo.classList.add("profile-logo");
     userProfile.appendChild(profileLogo);
 
+    const nameAndDescription = document.createElement("div");
+    nameAndDescription.classList.add("name-and-description");
     const name = document.createElement("div");
     name.innerHTML = `${answer.User.firstName} ${answer.User.lastName}`;
     name.classList.add("answer-name");
-    userProfile.appendChild(name);
+    const description = document.createElement("div");
+    description.innerHTML = `${answer.User.description}`;
+    description.classList.add("answer-description");
+    nameAndDescription.appendChild(name);
+    nameAndDescription.appendChild(description);
+    userProfile.appendChild(nameAndDescription);
     answerTile.appendChild(userProfile);
 
     const question = questionData.find((el) => el.id === answer.questionId);

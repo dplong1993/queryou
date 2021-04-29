@@ -12,7 +12,7 @@ h1 {
   color: #636466;
 }
 
-.log-out{
+.log-out {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,34 +27,33 @@ h1 {
   cursor: pointer;
 }
 
-.log-out-btn-container{
+.log-out-btn-container {
   display: flex;
   justify-items: center;
   align-items: center;
 }
 
-
-.topic-logo{
+.topic-logo {
   width: 18px;
   height: 18px;
   border-radius: 9px;
   margin-right: 8px;
 }
 
-
-#feed-header{
+#feed-header {
   box-sizing: border-box;
   width: 158px;
   height: 34px;
   display: flex;
   padding: 8px;
-  background-color: salmon;
+  background-color: #ff7d2b;
   color: darkred;
   border-radius: 3px;
   align-self: center;
+  font-weight: bold;
 }
 
-.topic-container{
+.topic-container {
   box-sizing: border-box;
   width: 158px;
   height: 34px;
@@ -63,35 +62,34 @@ h1 {
   align-items: center;
 }
 
-.topic-container:hover{
+.topic-container:hover {
   background-color: lightgrey;
 }
 
-#svg-feed{
+#svg-feed {
   width: 10px;
   height: 11px;
-  border: solid  darkred 4px ;
+  border: solid darkred 4px;
   border-radius: 3px;
   margin-right: 8px;
 }
 
-#feed-label{
+#feed-label {
   color: darkred;
 }
 
-
-#page{
+#page {
   width: 1002px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
 }
 
-#feed{
-  position: fixed;
-  top: 79px;
+#feed {
+  margin-top: 30px;
 }
 
-.profile-logo{
+.profile-logo {
   box-sizing: border-box;
   border: solid white 1px;
   height: 35px;
@@ -99,35 +97,43 @@ h1 {
   border-radius: 100px;
 }
 
-#answer-feed{
-  position: relative;
-  left: 182px;
-
+#answer-feed {
+  margin-left: 40px;
 }
 
-.answer-tile{
+.answer-tile {
   box-sizing: border-box;
   padding: 16px;
   background-color: white;
-  width:568px;
+  width: 568px;
   margin-top: 30px;
 }
 
-
-.user-profile{
+.user-profile {
   display: flex;
   align-items: center;
   margin-top: 8px;
 }
 
-.question-title{
+.answer-name,
+.answer-description {
+  padding-left: 10px;
+  align-self: flex-start;
+}
+
+.answer-name {
+  font-weight: bold;
+}
+
+.question-title {
   margin-top: 15px;
   font-size: 15px;
   color: black;
   font-weight: bold;
 }
 
-.answer-content{
+.answer-content {
   color: #666;
   font-size: 15px;
+  padding-top: 10px;
 }

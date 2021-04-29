@@ -25,9 +25,8 @@ router.get(
     let questionIds = questions.map((el) => el.dataValues.id);
     let answers = await Answer.findAll({
       where: { questionId: { [Op.in]: questionIds } },
+      include: { model: User },
     });
-    let userProfile = await User.findByPk(user.id);
-    let answerProfile = await User.findByPk(2);
 
     // Normalize the data so its easier to work with
     userTopics = userTopics.map((el) => {
@@ -35,18 +34,16 @@ router.get(
       return el.dataValues;
     });
     questions = questions.map((el) => el.dataValues);
-    answers = answers.map((el) => el.dataValues);
-    userProfile = userProfile.dataValues;
-    answerProfile = answerProfile.dataValues;
-    console.log(userProfile, answerProfile);
+    answers = answers.map((el) => {
+      el.dataValues.User = el.dataValues.User.dataValues;
+      return el.dataValues;
+    });
 
     res.json({
       id: user.id,
-      userTopics: userTopics,
+      userTopics,
       answers,
       questions,
-      userProfile,
-      answerProfile,
     });
   })
 );
